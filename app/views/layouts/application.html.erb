@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>TaskListproduct</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+</head>
+
+<body>
+  <div class="container">
+    <%= yield %>
+  </div>
+  <script type="text/javascript">
+    $("#price_form_btn").click(function(){
+      $("#price_form_id").submit();
+    });
+    $('.number').keypress(function(event) {
+      if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+        event.preventDefault();
+      }
+    });
+  </script>
+  <% flash.each do |key, value| %>
+  <script>
+    Lobibox.notify('<%= key %>', {
+      delay: 5000,  
+      delayIndicator: true,
+      msg: "<%= value %>"
+    });
+  </script>
+
+  <% end %>
+</body>
+</html>

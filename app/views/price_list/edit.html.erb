@@ -1,0 +1,62 @@
+
+<div class="main">
+	<div class="header-edit">
+		<span class="v-center price-list-label" >PRICE LISTS</span>
+		<div class="menu-bar v-center">
+		<%=link_to "Guardar", "javascript:void(0)", class: "btn btn-success btn-sm margin-l-r-5" , id: "price_form_btn"%>
+		
+		<%=link_to "Cancelar", root_path, class: "btn btn-warning btn-sm margin-l-r-5" , id: "price_form_btn"%>
+		
+		</div>
+	</div>
+	
+	<%=semantic_form_for :price ,url: price_list_path(:list_price=>@list), method: :put ,html:{id: 'price_form_id'} do |f| %>
+	<div class="price-search-bar">
+		<div class="row">
+			<div class="form-group col-sm-10">
+			
+			<label for="price">PRICE LIST NAME</label>
+			<input type="text" class="form-control" name="list_description" id="price" value="<%=@list.list_description%>" maxlength="100">
+			</div>
+			
+			<label class="col-sm-2 price-search-cbox">
+			<input type="checkbox" name="list_default_mark" checked="true" ">Default Price List</label>
+			
+		</div>
+	</div>
+	
+	<div class="main-content">
+		<div class="table-responsive"> 
+					
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+					<th>SERVICES</th>
+						<% @category_array.each do |cats|%>
+						<th><%= cats.description %></th>
+						<% end %>
+					</tr>
+				</thead>
+				<tbody>
+				<% @array.each do |services|%>
+					<% services.each do |service, cats| %>
+					<tr>
+						<td><%= service.values.join('') %></td>
+						<% cats.each do |cat, price|%>
+						<td class="td-input">
+		<input type="" name="price[<%=service.keys%>][<%=cat%>]" class="form-control inputbox number" 
+		value="<%=price%>" maxlength="10">
+
+						</td>
+						<% end %>
+						
+					</tr>
+					<%end%>
+				<% end %>	
+				</tbody>
+			</table>
+			<%end%>
+			<!-- </form> -->
+		</div>
+	</div>
+</div>

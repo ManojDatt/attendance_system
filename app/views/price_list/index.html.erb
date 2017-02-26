@@ -1,0 +1,70 @@
+
+
+
+<div class="main">
+    <div class="header">
+        <div class="row padding-t-b-10">
+            <div class="col-md-6">
+                <%=link_to"New Price List", new_price_list_path, class:"btn btn-success new-reg"%>
+                <!-- <button class="btn btn-success new-reg">New Registration</button> -->
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-12"> 
+                        <%= search_form_for @q , url: price_list_index_path do |f| %>
+                        <div class="input-group">
+                            <%= f.search_field :list_description_cont, class: "form-control",placeholder: "Enter name to Search" %>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="table-responsive">          
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Price List name</th>
+                        <th class="th-default">Default List</th>
+                        <th class="th-action">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% @listPrices.each do |price| %>
+                    <tr>
+                        <td><%= price.list_description %></td>
+                        <td>
+                            <div class="checkbox no-margin">
+
+                                <%= check_box("price_mark", price.pklist, {checked: price.list_default_mark, class:"margin-l-0"}) %>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-btn">
+                                <%= link_to(edit_price_list_path(price), class:"btn btn-info btn-sm")do %>
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <% end %>
+                                <%= link_to price_list_path(price), method: "delete", :confirm => "You sure?", class:"btn btn-danger btn-sm" do %>
+                                <span class="glyphicon glyphicon-trash"></span>
+                                <% end %>
+                            </div>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="page-switch">
+    <%= paginate @listPrices %>
+</div>
