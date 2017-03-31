@@ -1,0 +1,48 @@
+
+<div class="main" id="main">
+    <div class="header">
+        <div class="row padding-t-b-10">
+            <div class="col-md-6">
+            <% if current_developer.present?%>
+            <% punch_in?%>
+            <% end %>
+            <% if punch_out?%>
+                <%=link_to"Punch-Out", punch_out_path, class:"btn btn-danger new-reg"%>
+            <% end %>    <!-- <button class="btn btn-success new-reg">New Registration</button> -->
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="table-responsive">          
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date Stamp</th>
+                        <th class="th-default">Punch-In-Time</th>
+                        <th class="th-action">Punch-Out-Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <% @attendances.each do |attendance| %>
+                    <tr>
+                        <td><%= attendance.created_at.ctime %></td>
+                        <td>
+                            <%= attendance.punch_in_time.present? ? attendance.punch_in_time.strftime("%H:%m %p") : "Punch Missed" %>
+                        </td>
+                        <td>
+                            <%= attendance.punch_out_time.present? ? attendance.punch_out_time.strftime("%H:%m %p") : "Punch Missed"%>
+                        </td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="page-switch">
+    <%= paginate @attendances %>
+</div>

@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.1'
-gem 'sqlite3'
+gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -20,7 +20,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'pry'
 end
-
+gem 'devise'
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -28,8 +28,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
-gem 'kaminari'
-gem 'formtastic', '~> 3.0'
+
 gem 'ransack'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'rails_admin'
+gem "kaminari"
 

@@ -10,42 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226045241) do
+ActiveRecord::Schema.define(version: 20170329052401) do
 
-  create_table "categories", primary_key: "pkcategory", force: :cascade do |t|
-    t.text     "description"
-    t.text     "note"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["pkcategory"], name: "index_categories_on_pkcategory", unique: true
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "admins", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_admins_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "list_price_details", force: :cascade do |t|
-    t.string   "listprice"
-    t.integer  "category_id"
-    t.integer  "service_id"
-    t.integer  "list_price_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["category_id"], name: "index_list_price_details_on_category_id"
-    t.index ["list_price_id"], name: "index_list_price_details_on_list_price_id"
-    t.index ["service_id"], name: "index_list_price_details_on_service_id"
+  create_table "attendances", force: :cascade do |t|
+    t.integer  "developer_id"
+    t.datetime "punch_in_time"
+    t.datetime "punch_out_time"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["developer_id"], name: "index_attendances_on_developer_id", using: :btree
   end
 
-  create_table "list_prices", primary_key: "pklist", force: :cascade do |t|
-    t.boolean  "list_default_mark"
-    t.string   "list_description"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.index ["pklist"], name: "index_list_prices_on_pklist", unique: true
+  create_table "developers", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "username"
+    t.string   "domain"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.index ["email"], name: "index_developers_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "services", primary_key: "pkservice", force: :cascade do |t|
-    t.text     "description"
-    t.text     "notes"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["pkservice"], name: "index_services_on_pkservice", unique: true
-  end
-
+  add_foreign_key "attendances", "developers"
 end

@@ -1,5 +1,8 @@
-Rails.application.routes.draw do
-	root 'price_list#index'
-	resources :price_list , param: :pklist
-	
+Rails.application.routes.draw do  
+  devise_for :admins, skip: :registrations
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :attendances, only:[:index,:create]
+  devise_for :developers, skip: :registrations
+  root "attendances#index"
+  get "punch_out"=>"attendances#punch_out", as: :punch_out
 end

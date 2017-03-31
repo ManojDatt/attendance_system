@@ -1,15 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TaskListproduct</title>
+  <title>Arka|Attendance|System</title>
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+  <style type="text/css">
+    .form-control:focus {
+      border-color: #66afe9;
+      outline: 0;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 0px rgba(102, 175, 233, .6);
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 0px rgba(102, 175, 233, .6);
+    }
+  </style>
 </head>
 
 <body>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <%= link_to "Mark Attendance", root_path, class: "navbar-brand" %>
+
+
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+        <ul class="nav navbar-nav">
+
+          <% if current_developer %>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+
+          <li>
+            <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
+          </li>
+        </ul>
+
+        <%end%>
+      </div>
+    </div>
+  </nav>
+  <% if notice.present? %>
+  <script>
+    Lobibox.notify('success', {
+      position:'top right',
+      delay: 5000,  
+      delayIndicator: true,
+      sound:false,
+      msg: "<%= notice %>"
+    });
+  </script>
+  <% end%>
   <div class="container">
     <%= yield %>
   </div>
@@ -32,6 +81,8 @@
     });
   </script>
 
+
   <% end %>
+
 </body>
 </html>
