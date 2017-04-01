@@ -33,4 +33,5 @@ gem 'ransack'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails_admin'
 gem "kaminari"
-
+gem 'whenever', :require => false
+gem 'rails-erd'
