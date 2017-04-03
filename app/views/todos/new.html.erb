@@ -1,0 +1,54 @@
+<div class="container" id="main">
+	<div class="row">
+		<div class="col-md-12">
+			<%= form_for :todo ,url:  todos_path ,method: :post do |f| %>
+
+			<div class="form-group row">
+			<label for="example-email-input" class="col-2 col-form-label">Select Project</label>
+				<div class="col-10">
+					<%= f.select(:project, Project.all.map{|x| [x.name,x.id]}, {}, { :class => 'form-control' , name: "todo[task_project]" }) %>
+				</div>
+			</div>
+			<br>
+			<ul id="fieldList">
+				<li>
+					<div class="form-group row">
+						<!-- <label for="example-text-input" class="col-2 col-form-label">Task Name</label> -->
+						<div class="col-10">
+							<%=f.text_field :task_name ,class: "form-control" ,placeholder: 'Today Task', name:'todo[task_name][]' %>
+						</div>
+					</div></li>
+					<li>
+						<div class="form-group row">
+							<!-- <label for="example-search-input" class="col-2 col-form-label">Task Time</label> -->
+							<div class="col-10">
+								<%=f.text_field :task_time ,class: "form-control" ,placeholder: 'Task time ' , name:'todo[task_time][]'%>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+				<button id="addMore">Add more fields</button>
+				<br>
+				<br>
+				<%=f.submit "Submit Task" ,class: "btn-btn-primary"%>
+				<%end%>
+
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		$(function() {
+			$("#addMore").click(function(e) {
+				e.preventDefault();
+				$("#fieldList").append("<li>&nbsp;</li>");
+				$("#fieldList").append("<li><br></li>");
+				$("#fieldList").append("<li><input type='text' name= 'todo[task_name][]' placeholder = 'Today Task' class = 'form-control' /></li>");
+				$("#fieldList").append("<li><br></li>");
+				$("#fieldList").append("<li><input type='text' name='todo[task_time][]' placeholder = 'Task Time' class= 'form-control'/></li>");
+				});
+		});
+
+	</script>
+

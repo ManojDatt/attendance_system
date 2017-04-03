@@ -89,11 +89,45 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Project' do   
+    list do
+      field :id do
+        searchable false
+        column_width 3
+        label "Project Id"
+      end
+      field :name do
+        column_width 100
+        label "Project Name"
+      end
+      field :domain do
+        column_width 100
+        label "Project domain"
+      end
+      items_per_page 10
+    end
+    show do
+      field :name
+      field :domain      
+      field :created_at
+      field :updated_at
+    end
+    edit do        
+      field :name
+      field :domain      
+    end
+    create do
+      field :name
+      field :domain
+    end
+  end
+
+
   config.actions do
     dashboard     # mandatory
     index                         # mandatory
     new do
-      except ['Attendance']
+      except ['Attendance','Todo']
     end
     export
     bulk_delete

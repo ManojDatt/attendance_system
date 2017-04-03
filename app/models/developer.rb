@@ -3,7 +3,8 @@ class Developer < ApplicationRecord
   :recoverable, :rememberable, :trackable, :validatable, :authentication_keys=>[:login]
 
   attr_accessor :login
-  has_many :attendances
+  has_many :attendances,dependent: :destroy
+  has_many :todos,dependent: :destroy
 
   def login=(login)
     @login = login

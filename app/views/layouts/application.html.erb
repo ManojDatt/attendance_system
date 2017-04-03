@@ -70,10 +70,13 @@
                 </a>
             </li>
             <li >
+            <% if current_developer %>
+
                 <% if punch_out?%>
                 <i class="fa fa-user fa-lg"></i>
                 <%=link_to"Punch-Out", punch_out_path%><span class="arrow"></span>
                 <% end %> 
+                <%end%>
             </li>
            
 
@@ -99,18 +102,18 @@
         </ul>
     </div>
 </div>
-<div class="container" id="main">
+<!-- <div class="container" id="main">
     <div class="row">
         <div class="col-md-12">
             <h4>
-            <% if current_developer.present?%>
+            <%# if current_developer.present?%>
             <h1 class="alt-1">4h 18m 3s</h1>
             <%=timer_counter%>
-            <% end %>
+            <%# end %>
             </h4>
         </div>
     </div>
-</div>
+</div> -->
   <div class="container">
 
     <%= yield %>
