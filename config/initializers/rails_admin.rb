@@ -22,6 +22,9 @@ RailsAdmin.config do |config|
       field :developer
       field :punch_in_time
       field :punch_out_time
+      field :lat_in
+      field :lat_out
+      field :extra_work
       field :created_at do
         searchable false
         label "date"
@@ -34,6 +37,9 @@ RailsAdmin.config do |config|
       field :developer
       field :punch_in_time
       field :punch_out_time
+      field :lat_in
+      field :lat_out
+      field :extra_work
       field :created_at
       field :updated_at
     end
@@ -41,6 +47,9 @@ RailsAdmin.config do |config|
       field :developer
       field :punch_in_time
       field :punch_out_time
+      field :lat_in
+      field :lat_out
+      field :extra_work
     end
   end
 

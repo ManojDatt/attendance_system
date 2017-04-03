@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329052401) do
+ActiveRecord::Schema.define(version: 20170403134729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,11 @@ ActiveRecord::Schema.define(version: 20170329052401) do
     t.integer  "developer_id"
     t.datetime "punch_in_time"
     t.datetime "punch_out_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "extra_work"
+    t.boolean  "lat_in",         default: false
+    t.boolean  "lat_out",        default: false
     t.index ["developer_id"], name: "index_attendances_on_developer_id", using: :btree
   end
 
