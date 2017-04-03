@@ -1,20 +1,6 @@
 
 <div class="main" id="main">
-    <div class="header">
-        <div class="row padding-t-b-10">
-            <div class="col-md-6">
-            <% if current_developer.present?%>
-            <h1 class="alt-1">4h 18m 3s</h1>
-            <%=timer_counter%>
-            <% end %>
-            <% if punch_out?%>
-                <%=link_to"Punch-Out", punch_out_path, class:"btn btn-danger new-reg"%>
-            <% end %>    <!-- <button class="btn btn-success new-reg">New Registration</button> -->
-            </div>
-            
-        </div>
-    </div>
-
+    
     <div class="main-content">
         <div class="table-responsive">          
             <table class="table table-bordered">
