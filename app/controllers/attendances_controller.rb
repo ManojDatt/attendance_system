@@ -1,8 +1,18 @@
 class AttendancesController < ApplicationController
+  
   before_action :authenticate_developer!
 
   def index
+    if current_developer.attendances.exists?
+      punch_date = current_developer.attendances.last 
+      unless punch_date.created_at.getlocal.strftime("%d-%m-%Y")==Time.zone.now.strftime("%d-%m-%Y")
+        current_developer.attendances.create(punch_in_time: Time.zone.now)
+      end
+    else
+      current_developer.attendances.create(punch_in_time: Time.zone.now)
+    end
     @attendances = current_developer.attendances.page(params[:page]).per(3)
+
   end
 
   def create

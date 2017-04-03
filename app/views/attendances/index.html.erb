@@ -4,7 +4,8 @@
         <div class="row padding-t-b-10">
             <div class="col-md-6">
             <% if current_developer.present?%>
-            <% punch_in?%>
+            <h1 class="alt-1">4h 18m 3s</h1>
+            <%=timer_counter%>
             <% end %>
             <% if punch_out?%>
                 <%=link_to"Punch-Out", punch_out_path, class:"btn btn-danger new-reg"%>
@@ -30,10 +31,10 @@
                     <tr>
                         <td><%= attendance.created_at.ctime %></td>
                         <td>
-                            <%= attendance.punch_in_time.present? ? attendance.punch_in_time.strftime("%H:%m %p") : "Punch Missed" %>
+                            <%= attendance.punch_in_time.present? ? attendance.punch_in_time.strftime("%I:%M %p") : "Punch Missed" %>
                         </td>
                         <td>
-                            <%= attendance.punch_out_time.present? ? attendance.punch_out_time.strftime("%H:%m %p") : "Punch Missed"%>
+                            <%= attendance.punch_out_time.present? ? attendance.punch_out_time.strftime("%I:%M %p") : "Punch Missed"%>
                         </td>
                     </tr>
                     <% end %>
@@ -46,3 +47,20 @@
 <div class="page-switch">
     <%= paginate @attendances %>
 </div>
+
+ <script>
+        window.jQuery(function ($) {
+            "use strict";
+
+            $('time').countDown({
+                with_separators: false
+            });
+            $('.alt-1').countDown({
+                css_class: 'countdown-alt-1'
+            });
+            $('.alt-2').countDown({
+                css_class: 'countdown-alt-2'
+            });
+
+        });
+ </script>

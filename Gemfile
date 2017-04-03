@@ -35,3 +35,4 @@ gem 'rails_admin'
 gem "kaminari"
 gem 'whenever', :require => false
 gem 'rails-erd'
+gem 'time_diff'

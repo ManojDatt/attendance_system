@@ -6,3 +6,4 @@ namespace :attendance do
  	model.first
  end	
 end
+

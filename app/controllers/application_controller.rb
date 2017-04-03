@@ -8,5 +8,14 @@ class ApplicationController < ActionController::Base
         user_params.permit(:login,:password,:remember_me)
       end
   end
+
+  def after_sign_in_path_for(resource)
+     if resource_name == :developer
+	 	
+     '/'
+ 	 else
+ 	 	rails_admin_url
+ 	 end
+  end
   
 end
