@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<% unless current_developer.present?%>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -26,63 +27,35 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-
-        <%= link_to "Mark Attendance", root_path, class: "navbar-brand" %>
-
-
+        <div class="brand">
+        <%= link_to "Arka Softwares", root_path, class: "navbar-brand" %>
+        
+        </div>
       </div>
 
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-        <ul class="nav navbar-nav">
-
-          <% if current_developer %>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-
-          <li>
-            <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
-          </li>
-        </ul>
-
-        <%end%>
-      </div>
+      
     </div>
   </nav>
-  <% if notice.present? %>
-  <script>
-    Lobibox.notify('success', {
-      position:'top right',
-      delay: 5000,  
-      delayIndicator: true,
-      sound:false,
-      msg: "<%= notice %>"
-    });
-  </script>
-  <% end%>
+  <div class="container">
+
+    <%= yield %>
+  </div>
+  <% else %>
+  
   <div class="nav-side-menu">
     <div class="brand">Arka Softwares<span class="badge pull-right">Developer</span></div>
     <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
     <div class="menu-list">
         <ul id="menu-content" class="menu-content collapse out">
-            <li>
+            <li><i class="fa fa-user fa-lg">
                 <a href="#">
                      <%=link_to"Developer Dashboard", root_path%><span class="arrow"></span>
                 </a>
-            </li>
-            <li >
-            <% if current_developer %>
-
-                <% if punch_out?%>
-                <i class="fa fa-user fa-lg"></i>
-                <%=link_to"Punch-Out", punch_out_path%><span class="arrow"></span>
-                <% end %> 
-                <%end%>
-            </li>
-           
+            </li>           
 
             <li data-toggle="collapse" data-target="#new" class="collapsed">
             <i class="fa fa-user fa-lg"></i>
-                <a href="#"><i class="fa fa-user fa-lg"></i> To Do <span class="arrow"></span></a>
+                <a href="javascript:void(0)"><i class="fa fa-user fa-lg"></i> To Do <span class="arrow"></span></a>
             </li>
             <ul class="sub-menu collapse" id="new">
                 <li>Today Task</li>
@@ -90,30 +63,19 @@
                 
             </ul>
             <li>
+                
+                <i class="fa fa-user fa-lg"></i>
+                <%=link_to ("<i class='fa fa-user fa-lg'></i>Profile").html_safe, get_developer_profile_path%><span class="arrow"></span>
+            </li>
+            <li>
                 <a href="#">
-                    <i class="fa fa-user fa-lg"></i> Profile<span class="arrow"></span>
+                <i class="fa fa-user fa-lg">
+                    <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
                 </a>
             </li>
-           <!--  <li>
-                <a href="#">
-                    <i class="fa fa-users fa-lg"></i> Users<span class="arrow"></span>
-                </a>
-            </li> -->
         </ul>
     </div>
 </div>
-<!-- <div class="container" id="main">
-    <div class="row">
-        <div class="col-md-12">
-            <h4>
-            <%# if current_developer.present?%>
-            <h1 class="alt-1">4h 18m 3s</h1>
-            <%=timer_counter%>
-            <%# end %>
-            </h4>
-        </div>
-    </div>
-</div> -->
   <div class="container">
 
     <%= yield %>
@@ -130,15 +92,17 @@
   </script>
   <% flash.each do |key, value| %>
   <script>
-    Lobibox.notify('<%= key %>', {
+    Lobibox.notify('info', {
+      title:"Arka Softwares",
       delay: 5000,  
       delayIndicator: true,
-      msg: "<%= value %>"
+      msg: "<%= value %>",
+      icon: false,
     });
   </script>
 
 
   <% end %>
-
+<% end%>
 </body>
 </html>

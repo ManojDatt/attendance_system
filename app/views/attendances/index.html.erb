@@ -1,14 +1,17 @@
 
 <div class="main" id="main">
-    
+    <h2>Dailly Attendances</h2>
     <div class="main-content">
         <div class="table-responsive">          
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Date Stamp</th>
+                        <th class="th-default">Date and Time</th>
                         <th class="th-default">Punch-In-Time</th>
                         <th class="th-action">Punch-Out-Time</th>
+                        <th class="th-action">Lat In</th>
+                        <th class="th-action">Lat Out</th>
+                        <th class="th-action">Extra Work(H:M)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -22,6 +25,15 @@
                         <td>
                             <%= attendance.punch_out_time.present? ? attendance.punch_out_time.strftime("%I:%M %p") : "Punch Missed"%>
                         </td>
+                         <td>
+                            <%= attendance.lat_in.present? ? attendance.lat_in : ".."%>
+                        </td>
+                         <td>
+                            <%= attendance.lat_out.present? ? attendance.punch_out_time : ".."%>
+                        </td>
+                         <td>
+                            <%= attendance.extra_work.present? ? attendance.extra_work : ".."%>
+                        </td>
                     </tr>
                     <% end %>
                 </tbody>
@@ -33,20 +45,3 @@
 <div class="page-switch">
     <%= paginate @attendances %>
 </div>
-
- <script>
-        window.jQuery(function ($) {
-            "use strict";
-
-            $('time').countDown({
-                with_separators: false
-            });
-            $('.alt-1').countDown({
-                css_class: 'countdown-alt-1'
-            });
-            $('.alt-2').countDown({
-                css_class: 'countdown-alt-2'
-            });
-
-        });
- </script>
