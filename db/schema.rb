@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403134729) do
+ActiveRecord::Schema.define(version: 20170404070921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,11 +36,12 @@ ActiveRecord::Schema.define(version: 20170403134729) do
     t.integer  "developer_id"
     t.datetime "punch_in_time"
     t.datetime "punch_out_time"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "extra_work"
-    t.boolean  "lat_in",         default: false
-    t.boolean  "lat_out",        default: false
+    t.string   "work_hour"
+    t.datetime "lat_in"
+    t.datetime "early_out"
     t.index ["developer_id"], name: "index_attendances_on_developer_id", using: :btree
   end
 
@@ -63,5 +64,28 @@ ActiveRecord::Schema.define(version: 20170403134729) do
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.string   "domain"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.string   "task_name"
+    t.string   "task_time"
+    t.integer  "task_type"
+    t.integer  "task_status"
+    t.integer  "project_id"
+    t.integer  "developer_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["developer_id"], name: "index_todos_on_developer_id", using: :btree
+    t.index ["project_id"], name: "index_todos_on_project_id", using: :btree
+  end
+
   add_foreign_key "attendances", "developers"
+  add_foreign_key "todos", "developers"
+  add_foreign_key "todos", "projects"
 end

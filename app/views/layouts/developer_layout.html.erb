@@ -17,7 +17,7 @@
 </head>
 
 <body>
-
+<% unless current_developer.present?%>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -40,8 +40,55 @@
 
     <%= yield %>
   </div>
+  <% else %>
   
+  <div class="nav-side-menu">
+    <div class="brand">Arka Softwares<span class="badge pull-right">Developer</span></div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+    <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+            <li><i class="fa fa-user fa-lg">
+                <a href="#">
+                     <%=link_to"Developer Dashboard", root_path%><span class="arrow"></span>
+                </a>
+            </li>
+            <li >
+             
+                <% if punch_out?%>
+                <%=link_to ("<i class='fa fa-user fa-lg'>Punch-Out").html_safe, punch_out_path%><span class="arrow"></span>
+                <% end %> 
+             
+            </li>
+           
 
+            <li data-toggle="collapse" data-target="#new" class="collapsed">
+            <i class="fa fa-user fa-lg"></i>
+                <a href="javascript:void(0)"><i class="fa fa-user fa-lg"></i> To Do <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="new">
+                <li>Today Task</li>
+                <li>R & D</li>
+                
+            </ul>
+            <li>
+                
+                <i class="fa fa-user fa-lg"></i>
+                <%=link_to ("<i class='fa fa-user fa-lg'></i>Profile").html_safe, get_developer_profile_path%><span class="arrow"></span>
+            </li>
+            <li>
+                <a href="#">
+                <i class="fa fa-user fa-lg">
+                    <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+  <div class="container">
+
+    <%= yield %>
+  </div>
   <script type="text/javascript">
     $("#price_form_btn").click(function(){
       $("#price_form_id").submit();
@@ -60,11 +107,11 @@
       delayIndicator: true,
       msg: "<%= value %>",
       icon: false,
-      sound:false
     });
   </script>
 
 
+  <% end %>
 <% end%>
 </body>
 </html>
