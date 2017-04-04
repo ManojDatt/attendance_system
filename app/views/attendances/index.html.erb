@@ -19,7 +19,7 @@
 
                     <% @attendances.each do |attendance| %>
                     <tr>
-                        <td><%= attendance.created_at.ctime %></td>
+                        <td><%= attendance.created_at.strftime("%A %d-%B-%Y at %I:%M %p")%></td>
                         <td>
                             <%= attendance.punch_in_time.present? ? attendance.punch_in_time.strftime("%I:%M %p") : "Punch Missed" %>
                         </td>

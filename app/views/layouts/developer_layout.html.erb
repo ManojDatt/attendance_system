@@ -62,24 +62,22 @@
            
 
             <li data-toggle="collapse" data-target="#new" class="collapsed">
-            <i class="fa fa-user fa-lg"></i>
-                <a href="javascript:void(0)"><i class="fa fa-user fa-lg"></i> To Do <span class="arrow"></span></a>
+           
+                <a href="javascript:void(0)">To Do</a>
             </li>
             <ul class="sub-menu collapse" id="new">
-                <li>Today Task</li>
-                <li>R & D</li>
+                <li><%=link_to ("Today Task").html_safe, new_todo_path%></li>
+                 <li><%=link_to ("R & D").html_safe, today_research_todos_path%></li>
                 
             </ul>
             <li>
                 
-                <i class="fa fa-user fa-lg"></i>
-                <%=link_to ("<i class='fa fa-user fa-lg'></i>Profile").html_safe, get_developer_profile_path%><span class="arrow"></span>
+              
+                <%=link_to ("Profile").html_safe, get_developer_profile_path%><span class="arrow"></span>
             </li>
             <li>
-                <a href="#">
-                <i class="fa fa-user fa-lg">
-                    <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
-                </a>
+                    <%= link_to "Log Out", destroy_developer_session_path , method: :delete%><span class="arrow"></span>
+               
             </li>
         </ul>
     </div>

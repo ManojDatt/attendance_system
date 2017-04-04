@@ -1,55 +1,61 @@
 <div class="container" id="main">
 <h2>DSR</h2>
-
-	<div class="row">
-		<div class="col-md-12">
+	<fieldset>
+		
 			<%= form_for :todo ,url:  todos_path ,method: :post do |f| %>
-
-			<div class="form-group row">
-			<label for="example-email-input" class="col-2 col-form-label">Select Project</label>
-				<div class="col-10">
-					<%= f.select(:project, Project.all.map{|x| [x.name,x.id]}, {}, { :class => 'form-control' , name: "todo[task_project]" }) %>
-				</div>
-			</div>
-			<br>
 			<ul id="fieldList">
+			<li>
+
+			<div class="form-group col-md-8">
+				<div class="col-4">
+					<label for="example-text-input" class="col-2 col-form-label">Select Project Name</label>
+				</div>
+				<div class="col-4">
+				<%= f.select(:project, Project.all.map{|x| [x.name,x.id]}, {}, { :class => 'form-control' , name: "todo[task_project]" }) %>
+				</div>
+			
+			</div>
+			</li>
+			<div class="task-section">
 				<li>
-					<div class="form-group row">
-						<!-- <label for="example-text-input" class="col-2 col-form-label">Task Name</label> -->
-						<div class="col-10">
+					<div class="form-group col-md-8">
+						<div class="col-4">
+							<label for="example-text-input" class="col-2 col-form-label">Task Name</label>
+						</div>
+						<!--  -->
+						<div class="col-4">
 							<%=f.text_field :task_name ,class: "form-control" ,placeholder: 'Today Task', name:'todo[task_name][]' %>
 						</div>
-					</div></li>
-					<li>
-						<div class="form-group row">
-							<!-- <label for="example-search-input" class="col-2 col-form-label">Task Time</label> -->
-							<div class="col-10">
-								<%=f.text_field :task_time ,class: "form-control" ,placeholder: 'Task time ' , name:'todo[task_time][]'%>
-							</div>
+					</div>
+				</li>
+				<li>
+					<div class="form-group col-md-8">
+						<div class="col-4">
+							<label for="example-text-input" class="col-2 col-form-label">Task Time</label>
 						</div>
-					</li>
-
-				</ul>
-				<button id="addMore">Add more fields</button>
-				<br>
-				<br>
+						<div class="col-4">
+							<%=f.text_field :task_time ,class: "form-control" ,placeholder: 'Task time ' , name:'todo[task_time][]'%>
+						</div>
+					</div>
+				</li>
+				</div>
+			</ul>
+			
+				<button type="button" id="addMore">Add more fields</button>
 				<%=f.submit "Submit Task" ,class: "btn-btn-primary"%>
 				<%end%>
 
-			</div>
-		</div>
+			
+	
+		
+	</fieldset>
 	</div>
 
 	<script type="text/javascript">
 		$(function() {
 			$("#addMore").click(function(e) {
 				e.preventDefault();
-				$("#fieldList").append("<li>&nbsp;</li>");
-				$("#fieldList").append("<li><br></li>");
-				$("#fieldList").append("<li><input type='text' name= 'todo[task_name][]' placeholder = 'Today Task' class = 'form-control' /></li>");
-				$("#fieldList").append("<li><br></li>");
-				$("#fieldList").append("<li><input type='text' name='todo[task_time][]' placeholder = 'Task Time' class= 'form-control'/></li>");
-				});
+				$("#fieldList").append("<li> <div class='form-group col-md-8'> <div class='col-4'> <label for='example-text-input' class='col-2 col-form-label'>Task Name</label> </div> <!--  --> <div class='col-4'> <input class='form-control' placeholder='Today Task' name='todo[task_name][]' id='todo_task_name' type='text'> </div> </div> </li> <li> <div class='form-group col-md-8'> <div class='col-4'> <label for='example-text-input' class='col-2 col-form-label'>Task Time</label> </div> <div class='col-4'> <input class='form-control' placeholder='Task time ' name='todo[task_time][]' id='todo_task_time' type='text'> </div> </div> </li>"); });
 		});
 
 	</script>
