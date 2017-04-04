@@ -1,16 +1,8 @@
 <div class="container" id="main">
-<h2>DSR</h2>
-
 	<div class="row">
+	<h2>R&D</h2>
 		<div class="col-md-12">
-			<%= form_for :todo ,url:  todos_path ,method: :post do |f| %>
-
-			<div class="form-group row">
-			<label for="example-email-input" class="col-2 col-form-label">Select Project</label>
-				<div class="col-10">
-					<%= f.select(:project, Project.all.map{|x| [x.name,x.id]}, {}, { :class => 'form-control' , name: "todo[task_project]" }) %>
-				</div>
-			</div>
+			<%= form_for :todo ,url: submit_research_todos_path ,method: :post do |f| %>
 			<br>
 			<ul id="fieldList">
 				<li>
@@ -45,7 +37,6 @@
 			$("#addMore").click(function(e) {
 				e.preventDefault();
 				$("#fieldList").append("<li>&nbsp;</li>");
-				$("#fieldList").append("<li><br></li>");
 				$("#fieldList").append("<li><input type='text' name= 'todo[task_name][]' placeholder = 'Today Task' class = 'form-control' /></li>");
 				$("#fieldList").append("<li><br></li>");
 				$("#fieldList").append("<li><input type='text' name='todo[task_time][]' placeholder = 'Task Time' class= 'form-control'/></li>");
