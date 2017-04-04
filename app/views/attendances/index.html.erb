@@ -26,13 +26,13 @@
                             <%= attendance.punch_out_time.present? ? attendance.punch_out_time.strftime("%I:%M %p") : "Punch Missed"%>
                         </td>
                          <td>
-                            <%= attendance.lat_in.present? ? attendance.lat_in : "No"%>
+                            <%= attendance.lat_in.present? ? attendance.lat_in : ".."%>
                         </td>
                          <td>
-                            <%= attendance.lat_out.present? ? attendance.punch_out_time : "No"%>
+                            <%= attendance.lat_out.present? ? attendance.punch_out_time : ".."%>
                         </td>
                          <td>
-                            <%= attendance.extra_work.present? ? attendance.extra_work : "0"%>
+                            <%= attendance.extra_work.present? ? attendance.extra_work : ".."%>
                         </td>
                     </tr>
                     <% end %>

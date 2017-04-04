@@ -1,4 +1,5 @@
 
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 @import url(bootstrap.css);
 @import url(lobibox.css);
 /*common*/
@@ -11,7 +12,7 @@
 .padding-t-b-10{padding:10px 0px;}
 .text-align-right{text-align: right;}
 ul{list-style: none;}
-body{font-family: 'Open Sans Condensed', sans-serif;}
+body{font-family: 'Arial', sans-serif;}
 table thead tr:first-child{background: #2d5771;color: #fff;}
 table thead{border: 2px solid #2d5771;}    
 
