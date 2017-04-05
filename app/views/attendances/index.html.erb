@@ -1,6 +1,7 @@
 
 <div class="main" id="main">
     <h2>Dailly Attendances</h2>
+    <hr>
     <div class="main-content">
         <div class="table-responsive">          
             <table class="table table-bordered">
@@ -42,11 +43,13 @@
                     </tr>
                     <% end %>
                 </tbody>
+
             </table>
+            
+            <div class="page-switch">
+                <%= paginate @attendances %>
+            </div>
+
         </div>
     </div>
-</div>
-
-<div class="page-switch">
-    <%= paginate @attendances %>
 </div>

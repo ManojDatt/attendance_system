@@ -10,10 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-     if resource_name == :developer
+   if resource_name == :developer
 	 	
      '/'
  	 else
+    ActionCable.server.broadcast "dsr_channel",{message: "mark attenadances", developer: "manoj dutt"}
  	 	rails_admin_url
  	 end
   end
