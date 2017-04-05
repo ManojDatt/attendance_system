@@ -6,8 +6,4 @@ class DsrChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
-
-  def notify(data)
-  	ActionCable.server.broadcast "dsr_channel", data['message']
-  end
 end

@@ -7,14 +7,16 @@ class AttendancesController < ApplicationController
     if current_developer.attendances.exists?
       punch_date = current_developer.attendances.last 
       unless punch_date.created_at.getlocal.strftime("%d-%m-%Y")==Time.current.strftime("%d-%m-%Y")
+        ActionCable.server.broadcast "dsr_channel", {message:"#{current_developer.name} has punch in on #{Time.current.strftime('%I:%M %p')}"}
         flash['success'] = "Punch In successfully"           
         current_developer.attendances.create(punch_in_time: Time.current, lat_in: lat_in)
       end
     else
+     ActionCable.server.broadcast "dsr_channel", {message:"#{current_developer.name} has punch in on #{Time.current.strftime('%I:%M %p')}"}
       flash['success'] = "Punch In successfully"
       current_developer.attendances.create(punch_in_time: Time.current, lat_in: lat_in)
     end
-    @attendances = current_developer.attendances.page(params[:page]).per(3)
+    @attendances = current_developer.attendances.page(params[:page]).per(7)
 
   end
 

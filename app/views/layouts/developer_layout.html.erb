@@ -3,7 +3,6 @@
 <head>
   <title>Arka|Attendance|System</title>
   <%= csrf_meta_tags %>
-
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   <style type="text/css">
@@ -55,19 +54,19 @@
         </li>
         <li >
           <% if punch_out?%>
-          <%=link_to ("<i class='fa fa-user fa-lg'>Punch-Out").html_safe, punch_out_path%>
+          <%=link_to "Punch-Out", punch_out_path%>
           <% end %> 
         </li>
         <li data-toggle="collapse" data-target="#new" class="collapsed">
           <a href="javascript:void(0)">To Do</a>
         </li>
         <ul class="sub-menu collapse" id="new">
-          <li><%=link_to ("Today Task").html_safe, new_todo_path%></li>
-          <li><%=link_to ("R & D").html_safe, today_research_todos_path%></li>
+          <li><%=link_to "Today Task", new_todo_path%></li>
+          <li><%=link_to "R & D", today_research_todos_path%></li>
 
         </ul>
         <li>
-          <%=link_to ("Profile").html_safe, get_developer_profile_path%>
+          <%=link_to "Profile", get_developer_profile_path%>
         </li>
         <li>
           <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
@@ -99,6 +98,7 @@
       delayIndicator: true,
       msg: "<%= value %>",
       icon: false,
+      sound: false
     });
   </script>
 

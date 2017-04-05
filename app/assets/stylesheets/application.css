@@ -13,7 +13,7 @@
 .text-align-right{text-align: right;}
 ul{list-style: none;}
 body{font-family: 'Arial', sans-serif;}
-table thead tr:first-child{background: #2d5771;color: #fff;}
+table thead tr:first-child{background: #0e4584;;color: #fff;}
 table thead{border: 2px solid #2d5771;}    
 
 
@@ -48,7 +48,7 @@ nav < .navbar-default{
 
 .login_panel{    background: rgba(17, 34, 17, 0.17); padding: 1em 4em; border-radius: 10px;}
 .nav-side-menu .brand {font-size: 26px !important; }
-table thead tr:first-child {background: #323e46; color: #fff; }
+table thead tr:first-child {background: #0e4584; color: #fff; }
 #main {
     width: calc(100% - 160px) !important;
     float: right;
@@ -60,7 +60,7 @@ table thead tr:first-child {background: #323e46; color: #fff; }
   font-family: verdana;
   font-size: 12px;
   font-weight: 200;
-  background-color: #2e353d;
+  background-color: #0e4584;;
   position: fixed;
   top: 0px;
   width: 230px;
@@ -82,21 +82,10 @@ table thead tr:first-child {background: #323e46; color: #fff; }
   list-style: none;
   padding: 0px;
   margin: 0px;
-  line-height: 35px;
+  line-height: 45px;
   cursor: pointer;
-  /*    
-    .collapsed{
-       .arrow:before{
-                 font-family: FontAwesome;
-                 content: "\f053";
-                 display: inline-block;
-                 padding-left:10px;
-                 padding-right: 10px;
-                 vertical-align: middle;
-                 float:right;
-            }
-     }
-*/
+    
+
 }
 .nav-side-menu ul :not(collapsed) .arrow:before,
 .nav-side-menu li :not(collapsed) .arrow:before {
@@ -106,7 +95,7 @@ table thead tr:first-child {background: #323e46; color: #fff; }
   padding-left: 10px;
   padding-right: 10px;
   vertical-align: middle;
-  float: right;
+  /*float: right;*/
 }
 .nav-side-menu ul .active,
 .nav-side-menu li .active {
@@ -143,7 +132,7 @@ table thead tr:first-child {background: #323e46; color: #fff; }
   vertical-align: middle;
 }
 .nav-side-menu li {
-  padding-left: 0px;
+  padding-left: 15px;
   border-left: 3px solid #2e353d;
   border-bottom: 1px solid #23282e;
 }
@@ -209,3 +198,7 @@ body {
 .task-section{background: #123;}
 .error{color: #b53a3a; font-family: initial; }
 .nav-side-menu li {font-size: 13px; }
+.font-low{font-size: 11px;}
+.main-content {margin: auto auto !important; }
+
+hr {margin-top: 20px !important; margin-bottom: 20px !important; }

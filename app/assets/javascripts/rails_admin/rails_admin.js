@@ -4,6 +4,7 @@
 //=  require 'jquery-ui/effect'
 //=  require 'jquery-ui/sortable'
 //=  require 'jquery-ui/autocomplete'
+//=  require 'cable'
 //=  require 'rails_admin/moment-with-locales'
 //=  require 'rails_admin/bootstrap-datetimepicker'
 //=  require 'rails_admin/jquery.colorpicker'
@@ -19,8 +20,7 @@
 //=  require 'rails_admin/ra.widgets'
 //=  require 'rails_admin/ui'
 //=  require 'rails_admin/custom/ui'
-//=  require 'cable'
-//=  require 'rails_admin/channels/dsr'
+
 
 
 $(document).ready(function(){

@@ -4,8 +4,8 @@ class Developer < ApplicationRecord
 
   attr_accessor :login
   has_many :attendances,dependent: :destroy
-  has_many :todos,dependent: :destroy
-
+  has_many :todos, dependent: :destroy
+  has_many :notifications, dependent: :destroy
   def login=(login)
     @login = login
   end

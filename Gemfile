@@ -19,10 +19,6 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'pry'
-  gem "guard-rails"
-  gem "rb-fchange", require: false
-  gem "rb-fsevent", require: false
-  gem "rb-inotify", require: false
 end
 gem 'devise'
 group :development do
