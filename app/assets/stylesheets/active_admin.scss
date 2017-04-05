@@ -1,0 +1,53 @@
+// SASS variable overrides must be declared before loading up Active Admin's styles.
+//
+// To view the variables that Active Admin provides, take a look at
+// `app/assets/stylesheets/active_admin/mixins/_variables.scss` in the
+// Active Admin source.
+//
+// For example, to change the sidebar width:
+// $sidebar-width: 242px;
+
+// Active Admin's got SASS!
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+// Overriding any non-variable SASS must be done after the fact.
+// For example, to change the default status-tag color:
+//
+//   .status_tag { background: #6090DB; }
+
+$skinMainFirstColor:  #134b1a!default;
+$skinMainSecondColor:  #133c4b!default;
+$skinBorderWindowColor: #13224b!default;
+
+@import "wigu/active_admin_theme";
+form.fieldset.inputs{
+    background-color: #f0f0f0;	
+}
+
+.line_spacing{
+	 padding: 0.2em;
+	 text-decoration: none;
+}
+
+a, a:link, a:visited {
+    color: #38678b;
+    text-decoration: none;
+}
+
+table.index_table th {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background-image: none;
+    border-color: currentcolor #0e1937 #0e1937 currentcolor;
+    border-image: none;
+    border-style: none solid solid none;
+    border-width: medium 1px 3px medium;
+    box-shadow: none;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 12px;
+    text-shadow: none;
+}
