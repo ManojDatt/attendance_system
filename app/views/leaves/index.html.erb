@@ -1,0 +1,33 @@
+<div class="main" id="main">
+    <h2>Leave</h2>
+    <hr>
+    <div class="main-content">
+        <div class="table-responsive">          
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="th-default">Total Leave</th>
+                        <th class="th-default">Available Leave</th> 
+                        <th class="th-default">Apply leave</th> 
+                    </tr>
+                </thead>
+                <tbody>
+
+                   
+                    <tr>
+                        <td><%=@leave.total_leave%></td>                        
+                        <td>
+                            <%=@leave.available_leave%>
+                        </td>
+                        <td>
+                            <%=link_to "Apply leave", new_apply_leafe_path %>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>           
+
+        </div>
+    </div>
+</div>
+

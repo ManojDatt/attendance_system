@@ -1,16 +1,14 @@
 class Todo < ApplicationRecord
-  belongs_to :project
-  belongs_to :developer
-  # enum task_status:["Pending","Complete"]
-   # enum task_type: { Task: 0, Research: 1 }
+	belongs_to :project
+	belongs_to :developer
+	validates_presence_of :task_name, :task_time
 
-scope :research, -> {
-  where(:task_type => "Research")
-}
+	scope :research, -> {
+		where(:task_type => "Research")
+	}
 
-scope :task, -> {
-  where(:task_type => "Task")
-}
-
+	scope :task, -> {
+		where(:task_type => "Task")
+	}
 
 end

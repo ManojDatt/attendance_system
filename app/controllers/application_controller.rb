@@ -15,6 +15,5 @@ class ApplicationController < ActionController::Base
    elsif resource_name == :admin_user
      admin_root_url
    end
- end
-  
+ end  
 end

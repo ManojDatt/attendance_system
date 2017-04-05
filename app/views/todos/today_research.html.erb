@@ -1,47 +1,64 @@
-<div class="container" id="main">
-	<div class="row">
-	<h2>R&D</h2>
-		<div class="col-md-12">
-			<%= form_for :todo ,url: submit_research_todos_path ,method: :post do |f| %>
-			<br>
-			<ul id="fieldList">
-				<li>
-					<div class="form-group row">
-						<!-- <label for="example-text-input" class="col-2 col-form-label">Task Name</label> -->
-						<div class="col-10">
-							<%=f.text_field :task_name ,class: "form-control" ,placeholder: 'Today Task', name:'todo[task_name][]' %>
-						</div>
-					</div></li>
-					<li>
-						<div class="form-group row">
-							<!-- <label for="example-search-input" class="col-2 col-form-label">Task Time</label> -->
-							<div class="col-10">
-								<%=f.text_field :task_time ,class: "form-control" ,placeholder: 'Task time ' , name:'todo[task_time][]'%>
-							</div>
-						</div>
-					</li>
 
-				</ul>
-				<button id="addMore">Add more fields</button>
-				<br>
-				<br>
-				<%=f.submit "Submit Task" ,class: "btn-btn-primary"%>
+<div class="container" id="main">
+<h2>Today's R & D</h2>
+	
+		<hr>
+			<%= form_for :todo ,url:  submit_research_todos_path ,method: :post, html:{id:"rnd_form" } do |f| %>
+			
+			
+			
+			<div  id="fieldList" class="col-md-12">
+
+			<div class="panel panel-default">
+  				<div class="panel-body">
+							
+					<div class="form-group col-md-8">
+						<div class="col-4">
+							<label for="example-text-input" class="col-2 col-form-label">Topic Name</label>
+						</div>
+						<!--  -->
+						<div class="col-4">
+							<%=f.text_area :task_name ,class: "form-control taskname" ,placeholder: 'Topic Name', name:'todo[task_name][]', Maxlength: 100 %>
+						</div>
+					</div>
+				
+					<div class="form-group">
+						<div class="col-md-2">
+							<label for="example-text-input" class="col-2 col-form-label">Duration</label>
+						</div>
+						<div class="col-md-4">
+							<%=f.text_field :task_time ,class: "form-control" ,placeholder: 'Duration ' , name:'todo[task_time][]', Maxlength: 10 %>
+						</div>
+					</div>
+				
+		     </div>
+		    </div>
+		   </div>
+			
+				<button type="button" id="addMore" class="btn btn-btn-primary">Add more 🌴</button>
+				<%=f.submit "Submit R&D" ,class: "btn btn-success"%>
+				<%=link_to "Cancel R&D" , root_path,class: "btn btn-danger pull-right"%>
 				<%end%>
 
-			</div>
-		</div>
+			
+	
+		
+	
 	</div>
 
 	<script type="text/javascript">
 		$(function() {
 			$("#addMore").click(function(e) {
 				e.preventDefault();
-				$("#fieldList").append("<li>&nbsp;</li>");
-				$("#fieldList").append("<li><input type='text' name= 'todo[task_name][]' placeholder = 'Today Task' class = 'form-control' /></li>");
-				$("#fieldList").append("<li><br></li>");
-				$("#fieldList").append("<li><input type='text' name='todo[task_time][]' placeholder = 'Task Time' class= 'form-control'/></li>");
-				});
+				$("#fieldList").append(" <div class='panel panel-default'><button id='remove' class='btn btn-danger btn-xs' type='button' onclick='return remove_field(this);'>remove</button> <div class='panel-body'><div><div class='form-group col-md-8'> <div class='col-4'> <label for='example-text-input' class='col-2 col-form-label'>Topic Name</label> </div> <!--  --> <div class='col-4'> <textarea class='form-control taskname' placeholder='Topic Name' name='todo[task_name][]' maxlength='100' id='todo_task_name'></textarea> </div> </div> <div class='form-group '> <div class='col-md-2'> <label for='example-text-input' class='col-2 col-form-label'>Duration</label> </div> <div class='col-md-4'> <input class='form-control' placeholder='Duration' name='todo[task_time][]' id='todo_task_time' type='text' maxlength=10> </div> </div></div></div></div>"); 
+				$("#fieldList").find('.taskname:last').focus();
+			});
+
+			
 		});
 
+		function remove_field(field){
+			$(field).parent().remove();
+		}
+		
 	</script>
-

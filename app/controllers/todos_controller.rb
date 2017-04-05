@@ -2,8 +2,7 @@ class TodosController < ApplicationController
 	before_action :authenticate_developer!
 	layout "developer_layout"
 	def new
-		@todo = Todo.new
-		
+		@todo = Todo.new		
 	end
 	def create
 		params[:todo][:task_name].each_with_index do |val,i|
@@ -14,7 +13,7 @@ class TodosController < ApplicationController
 	end
 
 	def today_research
-		
+
 	end
 
 	def submit_research
@@ -24,5 +23,5 @@ class TodosController < ApplicationController
 		flash['success'] ="R&D submited successfully..."
 		redirect_to root_path
 	end
-end
 
+end

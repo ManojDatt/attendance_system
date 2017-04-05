@@ -1,21 +1,23 @@
 <table  class="index_table table">
 	<thead>
-		<tr>
-		<th class="sortable">    Work Task</a></th>
+		<tr>		
 		<th class="sortable">    Task Time</a></th>
 		<th class="sortable">    Work Type</a></th>
 		<th class="sortable">    Project Name</a></th>
 		<th class="sortable">    Developer</a></th>
+		<th class="sortable">    DSR Date</a></th>
+		<th class="sortable">    Work Task</a></th>
 		</tr>
 	</thead>
 	<tbody>
 		<%@daily_dsr.each do |f|%>
-		<tr>
-			<td><%=f.task_name%></td>
+		<tr>			
 			<td><%=f.task_time%></td>
 			<td><%=f.task_type%></td>
 			<td><%=f.project.try(:name)%></td>
 			<td><%=f.developer.email%></td>
+			<td><%=f.created_at.strftime("%d-%B-%y %I:%m %p")%></td>
+			<td><%=f.task_name%></td>
 		</tr>
 		<%end%>
 	</tbody>
