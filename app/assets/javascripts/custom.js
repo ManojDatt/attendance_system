@@ -68,4 +68,6 @@ $("#rnd_form").validate({
     });
 
 
+
+
 });

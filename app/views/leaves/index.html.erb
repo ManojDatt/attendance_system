@@ -15,9 +15,9 @@
 
                    
                     <tr>
-                        <td><%=@leave.total_leave%></td>                        
+                        <td><%=@leave.try(:total_leave) %></td>                        
                         <td>
-                            <%=@leave.available_leave%>
+                            <%=@leave.try :available_leave%>
                         </td>
                         <td>
                             <%=link_to "Apply leave", new_apply_leafe_path %>

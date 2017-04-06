@@ -24,4 +24,5 @@ match "/admin/leave_applications/:id/reject" => 'admin/leave_applications#reject
 	get 'developer-profile'=> "attendances#get_developer_profile" , as: :get_developer_profile
 
 	mount ActionCable.server => '/cable'
+	match '*path' => redirect('/'), via: [:get,:post]
 end

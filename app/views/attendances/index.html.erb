@@ -7,7 +7,8 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th class="th-default">Date and Time</th>
+                        <th class="th-default">Day</th>
+                        <th class="th-default">Date</th>
                         <th class="th-default">Punch-In-Time</th>
                         <th class="th-action">Punch-Out-Time</th>
                         <th class="th-action">Lat In</th>
@@ -20,7 +21,9 @@
 
                     <% @attendances.each do |attendance| %>
                     <tr>
-                        <td><%= attendance.created_at.strftime("%A %d-%B-%Y at %I:%M %p")%></td>
+                        <td style="background-color: <%=day_color(attendance.created_at.strftime("%A"))%>; color:white;"><%= attendance.created_at.strftime("%A")%></td>
+                        <td><%= attendance.created_at.strftime("%d-%B-%Y")%></td> 
+                            <!-- strftime("%A %d-%B-%Y at %I:%M %p") -->
                         <td>
                             <%= attendance.punch_in_time.present? ? attendance.punch_in_time.strftime("%I:%M %p") : "Punch Missed" %>
                         </td>

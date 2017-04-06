@@ -36,7 +36,7 @@ class AttendancesController < ApplicationController
       @extra_work = "%02d hour: %02d min" % [hour, min]
     end
 
-    @attendance = current_developer.attendances.last.update(punch_out_time: Time.current, early_out:Time.current,work_hour: work_hour, extra_work:@extra_work)
+    @attendance = current_developer.attendances.last.update(punch_out_time: Time.current, early_out:Time.current,work_hour: work_hour, extra_work:@extra_work, punch_out_status: true)
     redirect_to attendances_url, notice:"Punch-Out successfully."
   end
 
