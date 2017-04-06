@@ -1,4 +1,8 @@
 ActiveAdmin.register ApplyLeave ,as: "Leave Application" do
+  scope :Pending
+  scope :Approved 
+  scope :Rejected 
+  
 permit_params :start_date,:end_date,:total_leave,:developer,:status
 	config.batch_actions = false
 	actions :all , except:[:new]
@@ -43,7 +47,7 @@ permit_params :start_date,:end_date,:total_leave,:developer,:status
 	end
 	
 	filter :developer
-	filter :status 
+	# filter :status 
 
 	form do |f|
 		f.inputs "Leave Application" do    
