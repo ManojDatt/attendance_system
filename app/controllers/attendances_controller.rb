@@ -3,7 +3,7 @@ class AttendancesController < ApplicationController
   before_action :authenticate_developer!
 
   def index
-     Time.current.hour > 10 and Time.current.min >0 ? lat_in=Time.current : lat_in=Time.current  
+     Time.current.hour >= 10 and Time.current.min >0 ? lat_in=Time.current : lat_in=Time.current  
     if current_developer.attendances.exists?
       punch_date = current_developer.attendances.last 
       unless punch_date.created_at.getlocal.strftime("%d-%m-%Y")==Time.current.strftime("%d-%m-%Y")
