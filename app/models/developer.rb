@@ -6,6 +6,12 @@ class Developer < ApplicationRecord
   has_many :attendances,dependent: :destroy
   has_many :todos, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_one :leave,dependent: :destroy
+  has_many :apply_leaves,class_name:"ApplyLeave",dependent: :destroy
+
+  after_create :create_leave_record
+
+
   def login=(login)
     @login = login
   end
@@ -24,6 +30,11 @@ class Developer < ApplicationRecord
   end 
 
   def name
-    username
+    email
   end 
+
+  def create_leave_record
+    self.create_leave(:total_leave=> 1.5,:available_leave=> 1.5)    
+  end
+
 end

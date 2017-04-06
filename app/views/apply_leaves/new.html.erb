@@ -1,0 +1,87 @@
+<div class="container" id="main">
+	<h2>Leave Application</h2>
+	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.1/themes/ui-lightness/jquery-ui.css">
+
+	<hr>
+	<%= form_for @apply_leave ,url:   apply_leaves_path  ,method: :post, html:{id:"todo_form" } do |f| %>
+
+
+
+	<div  id="fieldList" class="col-md-8">
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+
+				<div class="form-group col-md-8">
+					<div class="col-4">
+						<label for="example-text-input" class="col-2 col-form-label">From</label>
+					</div>
+					<!--  -->
+					<div class="col-4">
+						<%=f.text_field :start_date ,class: "form-control"%>
+					</div>
+				</div>
+
+				<div class="form-group col-md-8" >	
+					<div class="col-4">
+						<label for="example-text-input" class="col-2 col-form-label">To</label>
+					</div>					
+					<div class="col-4">
+						<%=f.text_field :end_date ,class: "form-control"%>
+					</div>
+				</div>
+
+				<div class="form-group col-md-8" >	
+					<div class="col-4">
+						<label for="example-text-input" class="col-2 col-form-label">Reason</label>
+					</div>					
+					<div class="col-4">
+						<%=f.text_area :reason ,class: "form-control"%>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>			
+
+	<%=f.submit "Apply Leave" ,class: "btn btn-success"%>
+	<%end%>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    
+        $("#apply_leave_start_date").datepicker({		   
+             // minDate:0,
+             // stepMonths:0,
+            dateFormat: "dd/mm/yy",
+            onSelect: function (selected) {
+
+                if (selected) {
+                    console.log("selected date-----"+selected);
+                    var dateAr = selected.split('/');
+                    var newDate = dateAr[2] + '/' + dateAr[1] + '/' + dateAr[0];
+
+                    newDate = new Date(newDate);
+
+                    newDate.setDate(newDate.getDate());
+                    console.log("new date------"+newDate);
+                    $("#apply_leave_end_date").datepicker("option", "minDate", newDate);
+                }
+
+            }
+
+        });
+
+        $("#apply_leave_end_date").datepicker({
+            
+            minDate: 0,
+            // stepMonths:0,
+            dateFormat: "dd/mm/yy",
+            onSelect: function (selected) {
+                $("#apply_leave_start_date").datepicker("option", "maxDate", selected);
+            }
+        });
+
+    });
+</script>

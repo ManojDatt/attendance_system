@@ -29,7 +29,6 @@
         </button>
         <div class="brand">
           <%= link_to "Arka Softwares", root_path, class: "navbar-brand" %>
-
         </div>
       </div>
 
@@ -71,6 +70,15 @@
         <li>
           <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
 
+        </li>
+         <li>
+          <%=link_to "Leave",  leaves_path  ,method: :get%>
+        </li>
+        <li>
+          <%=link_to "apply leave", new_leafe_path ,method: :get%>
+        </li>
+        <li>
+          <%=link_to "Leave", new_leafe_path ,method: :get%>
         </li>
       </ul>
     </div>

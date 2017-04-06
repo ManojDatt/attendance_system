@@ -3,7 +3,7 @@
 //
 //= require action_cable
 //= require_self
-//= require_tree ./rails_admin/channels
+//= require_tree ./channels
 
 (function() {
   this.App || (this.App = {});

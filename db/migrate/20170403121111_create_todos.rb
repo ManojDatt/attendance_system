@@ -3,8 +3,8 @@ class CreateTodos < ActiveRecord::Migration[5.0]
     create_table :todos do |t|
       t.string :task_name
       t.string :task_time
-      t.integer :task_type
-      t.integer :task_status
+      t.string :task_type
+      t.string :remark
       t.references :project, foreign_key: true
       t.references :developer, foreign_key: true
 
