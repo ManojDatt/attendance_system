@@ -73,6 +73,7 @@ GEM
       thor (~> 0.19)
     builder (3.2.3)
     byebug (9.0.6)
+    cancan (1.6.10)
     choice (0.2.0)
     chronic (0.10.2)
     coderay (1.1.1)
@@ -269,6 +270,7 @@ DEPENDENCIES
   active_admin_theme
   activeadmin (~> 1.0.0.pre4)
   byebug
+  cancan
   coffee-rails (~> 4.2)
   devise
   inherited_resources!
