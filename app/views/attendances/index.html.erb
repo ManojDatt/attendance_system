@@ -31,7 +31,7 @@
                             <%= attendance.lat_in.present? ? "#{attendance.lat_in.hour-10} hour : #{attendance.lat_in.min} min" : ".."%>
                         </td>
                          <td>
-                            <%= attendance.early_out.present? ? early_out(attendance.early_out) : ".."%>
+                            <%= attendance.early_out.present? ? today_early_out(attendance.early_out) : ".."%>
                         </td>
                         <td>
                             <%= attendance.work_hour.present? ? attendance.work_hour : ".."%>

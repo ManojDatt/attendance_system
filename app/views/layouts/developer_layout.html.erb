@@ -56,10 +56,10 @@
           <%=link_to "Punch-Out", punch_out_path%>
           <% end %> 
         </li>
-        <li data-toggle="collapse" data-target="#new" class="collapsed">
+        <li data-toggle="collapse" data-target="#todo" class="collapsed">
           <a href="javascript:void(0)">To Do</a>
         </li>
-        <ul class="sub-menu collapse" id="new">
+        <ul class="sub-menu collapse" id="todo">
           <li><%=link_to "Today Task", new_todo_path%></li>
           <li><%=link_to "R & D", today_research_todos_path%></li>
 
@@ -75,11 +75,9 @@
           <%=link_to "Leave",  leaves_path  ,method: :get%>
         </li>
         <li>
-          <%=link_to "apply leave", new_leafe_path ,method: :get%>
+          <%=link_to "Apply leave", new_leafe_path ,method: :get%>
         </li>
-        <li>
-          <%=link_to "Leave", new_leafe_path ,method: :get%>
-        </li>
+        
       </ul>
     </div>
   </div>
