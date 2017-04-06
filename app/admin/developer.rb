@@ -4,29 +4,22 @@ ActiveAdmin.register Developer do
 	config.batch_actions = false
 	actions :all
 
+	action_item :view, only: :show do
+		link_to 'Today DSR',  daily_path(developer) , method: :get,:class=>"line_spacing" 
+	end
+
+	action_item :view, only: :show do
+		link_to 'Monthly DSR', monthly_path(developer) , method: :get,:class=>"line_spacing"
+	end
+
+
 	index download_links: [:csv] do
 		id_column
 		column :email
 		column :username
 		column :domain
 		column "Created Date", :created_at
-		column "Actions" do |f|
-			a do                                                         
-				link_to 'View', admin_developer_path(f),:class=>"line_spacing"
-			end        
-			a do                                                         
-				link_to 'Edit', edit_admin_developer_path(f), method: :get ,:class=>"line_spacing"
-			end
-			a do                                                         
-				link_to 'Delete', admin_developer_path(f), method: :delete, :data => { :confirm => 'Are you sure, you want to delete this user?' },:class=>"line_spacing"
-			end
-			a do                                                         
-				link_to 'Today DSR', daily_path(f), method: :get,:class=>"line_spacing"
-			end
-			a do                                                         
-				link_to 'Monthly DSR',monthly_path(f), method: :get,:class=>"line_spacing"
-			end
-		end
+		actions
 	end
 
 	filter :email
