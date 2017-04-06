@@ -4,7 +4,7 @@ permit_params :total_leave,:available_leave,:developer
 	actions :all,except:[:new]
 
 	index download_links: [:csv] do
-		id_column
+		# id_column
 		column :total_leave
 		column :available_leave
 		column :developer

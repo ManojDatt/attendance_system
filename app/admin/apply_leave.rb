@@ -18,7 +18,7 @@ permit_params :start_date,:end_date,:total_leave,:developer,:status
 
 	index download_links: [:csv] do
 		# selectable_column
-		id_column
+		# id_column
 		column :start_date
 		column :end_date
 		column :total_leave

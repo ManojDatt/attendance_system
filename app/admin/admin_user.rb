@@ -1,9 +1,7 @@
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation,:role
   actions :all
-  index do
-    selectable_column
-    id_column
+  index download_links: [:csv]  do
     column :email
     column :role
     column :current_sign_in_at

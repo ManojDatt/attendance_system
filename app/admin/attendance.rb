@@ -4,7 +4,7 @@ ActiveAdmin.register Attendance do
 	actions :all , except:[:new,:destroy]
 	index download_links: [:csv] do
 		# selectable_column
-		id_column
+		# id_column
 		column :punch_in_time
 		column :punch_out_time do |f|
 			if f.punch_out_time.present?

@@ -14,7 +14,7 @@ ActiveAdmin.register Developer do
 
 
 	index download_links: [:csv] do
-		id_column
+		# id_column
 		column :email
 		column :username
 		column :domain
