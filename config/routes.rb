@@ -9,8 +9,8 @@ match "/admin/leave_applications/:id/reject" => 'admin/leave_applications#reject
 	# devise_for :admins, skip: :registrations
 	# mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 	resources :projects
-	resources :leaves
-	resources :apply_leaves
+	resources :leaves,only:[:index]
+	resources :apply_leaves,only:[:index,:new,:create]
 	resources :todos,only:[:new,:create] do
 		collection do
 			get 'today_research'
@@ -25,4 +25,5 @@ match "/admin/leave_applications/:id/reject" => 'admin/leave_applications#reject
 
 	mount ActionCable.server => '/cable'
 	match '*path' => redirect('/'), via: [:get,:post]
+
 end
