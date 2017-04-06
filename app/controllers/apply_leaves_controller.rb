@@ -2,7 +2,7 @@ class ApplyLeavesController < ApplicationController
 	layout "developer_layout"
   before_action :authenticate_developer!
   def index
-  	
+    @apply_leaves = ApplyLeave.all  	
   end
   def new
   	@apply_leave = ApplyLeave.new  	
