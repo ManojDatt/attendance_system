@@ -6,9 +6,10 @@
         <div class="table-responsive">          
             <table class="table table-bordered">
                 <thead>
-                    <tr>
-                        <th class="th-default">Day</th>
-                        <th class="th-default">Date</th>
+                    <tr><th>Sr.</th>
+                        <th class="th-default">Day/Date</th>
+                        <th class="th-default">1st Half</th>
+                        <th class="th-default">2nd Half</th>
                         <th class="th-default">Punch-In-Time</th>
                         <th class="th-action">Punch-Out-Time</th>
                         <th class="th-action">Lat In</th>
@@ -18,23 +19,34 @@
                     </tr>
                 </thead>
                 <tbody class="font-low">
-
-                    <% @attendances.each do |attendance| %>
+                <% if @attendances.present? %>
+                    <% @attendances.each_with_index do |attendance, index| %>
+                    <% if [7,14,21,28].include?(index) %>
                     <tr>
-                        <td style="background-color: <%=day_color(attendance.created_at.strftime("%A"))%>; color:white;"><%= attendance.created_at.strftime("%A")%></td>
-                        <td><%= attendance.created_at.strftime("%d-%B-%Y")%></td> 
+                    <td colspan="8">
+                    <hr>
+                    </td>
+                    </tr>
+                    <% end%>
+                    <tr>
+                    <td><%= index+1 %></td>
+                        <td style="background-color: <%=day_color(attendance.created_at.strftime("%A"))%>; color:white;"><%= attendance.created_at.strftime("%A")%>/<%= attendance.created_at.strftime("%d-%B-%Y")%></td>
+                        <td> <%= first_period(attendance) %></td>
+
+                       
+                        <td> <%= second_period(attendance)  %> </td>
                             <!-- strftime("%A %d-%B-%Y at %I:%M %p") -->
                         <td>
-                            <%= attendance.punch_in_time.present? ? attendance.punch_in_time.strftime("%I:%M %p") : "Punch Missed" %>
+                            <%= attendance.punch_in_time.present? ? attendance.punch_in_time.strftime("%I:%M %p") : ".." %>
                         </td>
                         <td>
                             <%= attendance.punch_out_time.present? ? attendance.punch_out_time.strftime("%I:%M %p") : ".."%>
                         </td>
                          <td>
-                            <%= attendance.lat_in.present? ? "#{attendance.lat_in.hour-10} hour : #{attendance.lat_in.min} min" : ".."%>
+                            <%= attendance.lat_in.present? ? "#{attendance.lat_in.hour} hour : #{attendance.lat_in.min} min" : ".."%>
                         </td>
                          <td>
-                            <%= attendance.early_out.present? ? today_early_out(attendance.early_out) : ".."%>
+                            <%= attendance.early_out.present? ? today_early_out(attendance) : ".."%>
                         </td>
                         <td>
                             <%= attendance.work_hour.present? ? attendance.work_hour : ".."%>
@@ -45,10 +57,21 @@
                         </td>
                     </tr>
                     <% end %>
+
                 </tbody>
 
             </table>            
                 <%= paginate @attendances %>
+            </div>
+            <% end %>
         </div>
     </div>
 </div>
+<style type="text/css">
+    hr {
+    margin-top: 0px!important;
+    margin-bottom: 0px !important;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+</style>
