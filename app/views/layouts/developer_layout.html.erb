@@ -51,6 +51,7 @@
             <%=link_to"Developer Dashboard", root_path%>
           </a>
         </li>
+        <li><p class="user_email_data">Login as &nbsp;<%=current_developer.email%></p></li>
         <li >
           <% if punch_out? %>
           <%=link_to "Punch-Out", punch_out_path%>
