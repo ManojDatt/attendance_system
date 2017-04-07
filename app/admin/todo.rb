@@ -11,7 +11,9 @@ ActiveAdmin.register Todo do
 
 	index download_links: [:csv] do
 		# id_column
-		column :task_name
+		column "Task name" do |body|
+              truncate(body.task_name, omision: "...", length: 50)
+      end
 		column :task_time
 		column :task_type
 		column :project
@@ -20,9 +22,6 @@ ActiveAdmin.register Todo do
 		actions
 	end
 
-	filter :task_name
-	filter :task_time
-	filter :task_type
 	filter :project
 	filter :developer
 	filter :created_at

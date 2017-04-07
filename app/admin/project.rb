@@ -5,7 +5,7 @@ permit_params :name,:domain
 	actions :all
 
 	index download_links: [:csv] do
-		id_column
+		# id_column
 		column :name
 		column :domain
 		column "Created Date", :created_at

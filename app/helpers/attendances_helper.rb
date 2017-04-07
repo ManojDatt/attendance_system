@@ -1,6 +1,7 @@
 module AttendancesHelper
 	require 'time_diff'
 	def punch_out?
+
 		if current_developer.attendances.exists?
 			punch_date = current_developer.attendances.last.punch_out_status
 			punch_date ? false : true
@@ -119,9 +120,7 @@ module AttendancesHelper
 			 end
 
 		end 			
-	end
-
-	
+	end	
 end
 
 
