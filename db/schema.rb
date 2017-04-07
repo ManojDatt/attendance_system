@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405131744) do
+ActiveRecord::Schema.define(version: 20170406125537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20170405131744) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "role"
     t.index ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -79,12 +80,20 @@ ActiveRecord::Schema.define(version: 20170405131744) do
     t.integer  "developer_id"
     t.datetime "punch_in_time"
     t.datetime "punch_out_time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "extra_work"
     t.string   "work_hour"
     t.datetime "lat_in"
     t.datetime "early_out"
+    t.boolean  "punch_out_status", default: false
+    t.boolean  "week_off",         default: false
+    t.float    "punch_in_at",      default: 10.0
+    t.float    "punch_out_at",     default: 19.0
+    t.boolean  "is_hollyday",      default: false
+    t.boolean  "punch_in_status",  default: false
+    t.boolean  "first_half"
+    t.boolean  "second_half"
     t.index ["developer_id"], name: "index_attendances_on_developer_id", using: :btree
   end
 

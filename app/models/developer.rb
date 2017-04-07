@@ -1,7 +1,7 @@
 class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :authentication_keys=>[:login]
-
+  
   attr_accessor :login
   has_many :attendances,dependent: :destroy
   has_many :todos, dependent: :destroy
@@ -9,8 +9,7 @@ class Developer < ApplicationRecord
   has_one :leave,dependent: :destroy
   has_many :apply_leaves,class_name:"ApplyLeave",dependent: :destroy
 
-  after_create :create_leave_record
-
+  after_create :create_leave_record 
 
   def login=(login)
     @login = login
@@ -54,5 +53,20 @@ class Developer < ApplicationRecord
         developer.attendances.create( created_at:day, updated_at:day)
       end
     end
+  end
+
+
+  def to_csv(attendance_data)
+      attributes = %w{punch_in_time punch_out_time extra_work work_hour lat_in early_out week_off punch_in_at punch_out_at punch_in_status first_half second_half}
+
+       CSV.generate(headers: true) do |csv|
+         # header row
+         csv << attributes
+         # add a row for each attendance
+         attendance_data.each do |attendance|
+           csv << attendance.attributes.values_at(*attributes)
+         end
+      end
+
   end
 end
