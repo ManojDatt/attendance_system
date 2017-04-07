@@ -1,7 +1,7 @@
 <div class="container" id="main">
     <h2>Leave Application</h2>    
     <hr>
-    <%= form_for :csv ,url:   download_attandance_admin_developer_path  ,method: :post, html:{id:"leave_application_form" } do |f| %>
+    <%= form_for :csv ,url:   download_attandance_admin_developer_path  ,method: :post, html:{id:"download_csv" } do |f| %>
 
         <div class="panel panel-default">
             <div class="panel-body">
@@ -12,7 +12,7 @@
 
                         <!--  -->
                         <div class="form-group">
-                         <input id="from_date" name="from" type="text" class= "form-control"/>
+                         <input id="from_date" required="true" name="from" type="text" class= "form-control"/>
                      </div>
                      </div>
              </div>
@@ -22,7 +22,7 @@
 
                         <!--  -->
                         <div class="form-group">
-                         <input id="to_date" name="to_date" type="text" class= "form-control" />
+                         <input id="to_date" required="true" name="to_date" type="text" class= "form-control" />
                      </div>
                      </div>
              </div>
@@ -34,8 +34,7 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-    
+    $(document).ready(function () {    
         $("#from_date").datepicker({          
              // minDate:0,
              // stepMonths:0,
@@ -53,11 +52,8 @@
                     console.log("new date------"+newDate);
                     $("#to_date").datepicker("option", "minDate", newDate);
                 }
-
             }
-
         });
-
         $("#to_date").datepicker({
             
             minDate: 0,
@@ -67,5 +63,6 @@
                 $("#from_date").datepicker("option", "maxDate", selected);
             }
         });
+
         });
         </script>
