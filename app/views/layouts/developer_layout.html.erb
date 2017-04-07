@@ -51,35 +51,27 @@
             <%=link_to"Developer Dashboard", root_path%>
           </a>
         </li>
+        <li><p class="user_email_data">Login as &nbsp;<%=current_developer.email%></p></li>
         <li >
-          <% if punch_out?%>
+          <% if punch_out? %>
           <%=link_to "Punch-Out", punch_out_path%>
           <% end %> 
-        </li>
-        <li data-toggle="collapse" data-target="#new" class="collapsed">
-          <a href="javascript:void(0)">To Do</a>
-        </li>
-        <ul class="sub-menu collapse" id="new">
-          <li><%=link_to "Today Task", new_todo_path%></li>
-          <li><%=link_to "R & D", today_research_todos_path%></li>
-
-        </ul>
+        </li> 
         <li>
           <%=link_to "Profile", get_developer_profile_path%>
-        </li>
-        <li>
-          <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
-
-        </li>
+        </li>         
+          <li><%=link_to "Today Task", new_todo_path%></li>
+          <li><%=link_to "R & D", today_research_todos_path%></li>             
          <li>
-          <%=link_to "Leave",  leaves_path  ,method: :get%>
+          <%=link_to "Leave Balance",  leaves_path  ,method: :get%>
         </li>
+
         <li>
-          <%=link_to "apply leave", new_leafe_path ,method: :get%>
-        </li>
-        <li>
-          <%=link_to "Leave", new_leafe_path ,method: :get%>
-        </li>
+          <%=link_to "Applied Leave",  apply_leaves_path  ,method: :get%>
+        </li> 
+         <li>
+          <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
+        </li>      
       </ul>
     </div>
   </div>
