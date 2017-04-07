@@ -12,17 +12,22 @@
                     </tr>
                 </thead>
                 <tbody>
-
+               
                    
                     <tr>
-                        <td><%=@leave.try(:total_leave) %></td>                        
+                        <td><%=@leave.try :total_leave %></td>                        
                         <td>
                             <%=@leave.try :available_leave%>
                         </td>
                         <td>
-                            <%=link_to "Apply leave", new_apply_leafe_path %>
+                            <% if @leave.nil? %>
+                            <%=link_to "Apply for leave", "javascript:void(0)" , class:"btn btn-primary",style:"", Disabled: "disabled" %>
+                            <% else %>
+                            <%=link_to "Apply for leave", new_apply_leafe_path , class:"btn btn-primary",style:"" %>
+                            <% end %>
                         </td>
                     </tr>
+
                 </tbody>
 
             </table>           

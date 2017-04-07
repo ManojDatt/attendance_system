@@ -1,7 +1,7 @@
 class Developer < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :trackable, :validatable, :authentication_keys=>[:login]
-
+  
   attr_accessor :login
   has_many :attendances,dependent: :destroy
   has_many :todos, dependent: :destroy
@@ -9,8 +9,7 @@ class Developer < ApplicationRecord
   has_one :leave,dependent: :destroy
   has_many :apply_leaves,class_name:"ApplyLeave",dependent: :destroy
 
-  after_create :create_leave_record
-
+  after_create :create_leave_record 
 
   def login=(login)
     @login = login
@@ -36,5 +35,6 @@ class Developer < ApplicationRecord
   def create_leave_record
     self.create_leave(:total_leave=> 1.5,:available_leave=> 1.5)    
   end
+
 
 end
