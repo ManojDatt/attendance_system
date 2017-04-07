@@ -1,6 +1,7 @@
 ActiveAdmin.register AdminUser do
   permit_params :email, :password, :password_confirmation,:role
   actions :all
+  config.batch_actions = false
   index download_links: [:csv]  do
     column :email
     column :role

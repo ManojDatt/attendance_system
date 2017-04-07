@@ -33,12 +33,13 @@ gem 'ransack'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # gem 'rails_admin'
 gem "kaminari"
-gem 'whenever', :require => false
+# gem 'whenever', :require => false
 gem 'rails-erd'
 gem 'time_diff'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'active_admin_theme'
 gem 'cancan'
+gem 'clockwork'
 
 

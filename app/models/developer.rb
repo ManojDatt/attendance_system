@@ -34,7 +34,15 @@ class Developer < ApplicationRecord
   end 
 
   def create_leave_record
-    self.create_leave(:total_leave=> 1.5,:available_leave=> 1.5)    
+    self.create_leave(:total_leave=> 1.5,:available_leave=> 1.5)
+    Developer.create_attendance
   end
 
+  def self.create_attendance
+    Date.current..Date.current.end_of_month.each_with_index do |f,i|
+      p f
+      p i
+    end
+    self.attendances.create()
+  end
 end
