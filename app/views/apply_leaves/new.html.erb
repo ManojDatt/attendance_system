@@ -5,46 +5,39 @@
 	<hr>
 	<%= form_for @apply_leave ,url:   apply_leaves_path  ,method: :post, html:{id:"leave_application_form" } do |f| %>
 
-
-
-	<div  id="fieldList" class="col-md-8">
-
 		<div class="panel panel-default">
 			<div class="panel-body">
 
-				<div class="form-group col-md-8">
-					<div class="col-4">
+				<div class="form-group col-md-12">
+					<div class="col-md-6">
 						<label for="example-text-input" class="col-2 col-form-label">From</label>
-					</div>
+					
 					<!--  -->
-					<div class="col-4">
+					<div class="form-group">
 						<%=f.text_field :start_date ,class: "form-control"%>
 					</div>
-				</div>
-
-				<div class="form-group col-md-8" >	
-					<div class="col-4">
+					</div>
+					<div class="col-md-6">
 						<label for="example-text-input" class="col-2 col-form-label">To</label>
-					</div>					
-					<div class="col-4">
+									
+					<div class="form-group">
 						<%=f.text_field :end_date ,class: "form-control"%>
 					</div>
+                    </div>  
 				</div>
 
-				<div class="form-group col-md-8" >	
-					<div class="col-4">
+				<div class="form-group col-md-12" >	
+					
 						<label for="example-text-input" class="col-2 col-form-label">Reason</label>
-					</div>					
-					<div class="col-4">
+					
 						<%=f.text_area :reason ,class: "form-control"%>
-					</div>
+					
 				</div>
 
 			</div>
+             <%=f.submit "Apply Leave" ,class: "btn btn-success"%>
 		</div>
-	</div>			
-
-	<%=f.submit "Apply Leave" ,class: "btn btn-success"%>
+       
 	<%end%>
 </div>
 
@@ -82,6 +75,45 @@
                 $("#apply_leave_start_date").datepicker("option", "maxDate", selected);
             }
         });
+
+
+	$("#leave_application_form").validate({
+		rules: {            
+             "apply_leave[start_date]": {
+                required: true
+            },
+
+             "apply_leave[end_date]": {
+                required: true
+            },
+
+             "apply_leave[reason]": {
+                required: true,
+                minlength: 10,
+                maxlength:50
+            }
+        },
+        messages:{
+
+             "apply_leave[start_date]": {
+                 required: "Please select start date"
+            },
+
+             "apply_leave[end_date]": {
+                 required: "Please select end date"
+            },
+
+             "apply_leave[reason]": {
+                required: "Please enter reason",
+                minlength: "Please enter minimum 10 characters",
+                maxlength:"Please enter no more than 50 characters"
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+
+	});
 
     });
 </script>
