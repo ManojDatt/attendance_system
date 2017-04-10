@@ -33,9 +33,15 @@
 						<%=f.text_area :reason ,class: "form-control"%>
 					
 				</div>
+               
 
+                <center>
+                 <div class="form-group">
+                <%=f.submit "Apply Leave" ,class: "btn btn-success"%>
+                </div>
+                </center>
 			</div>
-             <%=f.submit "Apply Leave" ,class: "btn btn-success"%>
+             
 		</div>
        
 	<%end%>
@@ -58,7 +64,6 @@
                     newDate = new Date(newDate);
 
                     newDate.setDate(newDate.getDate());
-                    console.log("new date------"+newDate);
                     $("#apply_leave_end_date").datepicker("option", "minDate", newDate);
                 }
 

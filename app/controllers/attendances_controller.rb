@@ -14,6 +14,9 @@ class AttendancesController < ApplicationController
             ActionCable.server.broadcast "dsr_channel", {message:"#{current_developer.name} has punch in on #{Time.current.strftime('%I:%M %p')}"}
             flash['success'] = "Punch In successfully"           
             punch_date.update(punch_in_time: Time.current, lat_in: lat_in, punch_in_status: true)
+            message = "#{current_developer.name} has punch in at #{Time.current.strftime('%A %H:%M %p')}" 
+            notification_type = 
+            current_developer.notifications.create(message:message, notification_type:"")
           
        end
        @attendances = current_developer.attendances.page(params[:page]).per(31)
@@ -29,6 +32,7 @@ class AttendancesController < ApplicationController
   end
 
   def punch_out
+    binding.pry
     punch_date = current_developer.attendances.where("created_at::date=?",Date.current).first 
     total_work_min = (Time.current - punch_date.punch_in_time)/60
     hour, min = total_work_min.divmod(60)
@@ -39,7 +43,7 @@ class AttendancesController < ApplicationController
     early_out_datetime = ((Time.current.hour * 60) + Time.current.min)
 
 
-    if ((Time.current.hour * 60) + Time.current.min) > extra_work_total_min
+    if early_out_datetime > extra_work_total_min
       total_extra_min = early_out_datetime - extra_work_total_min
       hour, min = total_extra_min.divmod(60)
       @extra_work = "%02d hour: %02d min" % [hour, min]

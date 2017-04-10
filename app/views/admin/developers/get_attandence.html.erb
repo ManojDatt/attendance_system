@@ -1,34 +1,39 @@
 <div class="container" id="main">
-    <h2></h2>    
-    <hr>
+   
     <%= form_for :csv ,url:   download_attandance_admin_developer_path  ,method: :post, html:{id:"download_csv" } do |f| %>
 
-        <div class="panel panel-default">
-            <div class="panel-body">
+    <center>
+        <div id="main_content_wrapper">
+          <div id="main_content" style="width:540px;">
+            <div class="panel">
+              <h3>Download Attendance # <%= Developer.find_by_id(params[:id]).name%></h3>
+              <div class="panel_contents">
+                <div class="attributes_table todo" id="attributes_table_todo_2">
+                  <table cellspacing="0" cellpadding="0" border="0">
+                    <tbody><tr class="row row-project">
+                      <th>From Date</th>
+                      <td>
+                        <span class="empty"><input id="from_date" required="true" name="from" type="text" class= "form-control"/></span>
+                      </td>
+                    </tr>
+                    <tr class="row row-task_name">
+                      <th>To Date</th>
+                      <td>
+                        <span class="empty"> <input id="to_date" required="true" name="to_date" type="text" class= "form-control" /></span>
+                      </td>
+                    </tr>
+                    
+                   
+                  </tbody></table>
+                </div>
+                <%=f.submit "Get CSV Data" ,class: "btn btn-success"%>
+              </div>
 
-                <div class="form-group col-md-12">
-                    <div class="col-md-6">
-                        <label for="example-text-input" class="col-2 col-form-label">From</label>
+            </div>
+          </div>
 
-                        <!--  -->
-                        <div class="form-group">
-                         <input id="from_date" required="true" name="from" type="text" class= "form-control"/>
-                     </div>
-                     </div>
-             </div>
-              <div class="form-group col-md-12">
-                    <div class="col-md-6">
-                        <label for="example-text-input" class="col-2 col-form-label">To</label>
-
-                        <!--  -->
-                        <div class="form-group">
-                         <input id="to_date" required="true" name="to_date" type="text" class= "form-control" />
-                     </div>
-                     </div>
-             </div>
-             <%=f.submit "Get CSV Data" ,class: "btn btn-success"%>
-        </div>
-       
+        </div>  
+        </center>     
     <%end%>
 </div>
 </div>
@@ -36,33 +41,33 @@
 <script type="text/javascript">
     $(document).ready(function () {    
         $("#from_date").datepicker({          
-             // minDate:0,
-             // stepMonths:0,
-            dateFormat: "dd/mm/yy",
-            onSelect: function (selected) {
+// minDate:0,
+// stepMonths:0,
+dateFormat: "dd/mm/yy",
+onSelect: function (selected) {
 
-                if (selected) {
-                    console.log("selected date-----"+selected);
-                    var dateAr = selected.split('/');
-                    var newDate = dateAr[2] + '/' + dateAr[1] + '/' + dateAr[0];
+    if (selected) {
+        console.log("selected date-----"+selected);
+        var dateAr = selected.split('/');
+        var newDate = dateAr[2] + '/' + dateAr[1] + '/' + dateAr[0];
 
-                    newDate = new Date(newDate);
+        newDate = new Date(newDate);
 
-                    newDate.setDate(newDate.getDate());
-                    console.log("new date------"+newDate);
-                    $("#to_date").datepicker("option", "minDate", newDate);
-                }
-            }
-        });
+        newDate.setDate(newDate.getDate());
+        console.log("new date------"+newDate);
+        $("#to_date").datepicker("option", "minDate", newDate);
+    }
+}
+});
         $("#to_date").datepicker({
-            
-            minDate: 0,
-            // stepMonths:0,
-            dateFormat: "dd/mm/yy",
-            onSelect: function (selected) {
-                $("#from_date").datepicker("option", "maxDate", selected);
-            }
-        });
 
-        });
-        </script>
+            minDate: 0,
+// stepMonths:0,
+dateFormat: "dd/mm/yy",
+onSelect: function (selected) {
+    $("#from_date").datepicker("option", "maxDate", selected);
+}
+});
+
+    });
+</script>

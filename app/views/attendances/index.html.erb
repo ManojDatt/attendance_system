@@ -31,10 +31,10 @@
                     <tr>
                     <td><%= index+1 %></td>
                         <td style="background-color: <%=day_color(attendance.created_at.strftime("%A"))%>; color:white;"><%= attendance.created_at.strftime("%A")%>/<%= attendance.created_at.strftime("%d-%B-%Y")%></td>
-                        <td> <%= first_period(attendance) %></td>
+                        <td> <%= attendance.first_half==true ? "PR" : attendance.first_half==false ? "AB" : ".." %></td>
 
                        
-                        <td> <%= second_period(attendance)  %> </td>
+                        <td> <%= attendance.second_half==true ? "PR" : attendance.second_half==false ? "AB" : ".." %> </td>
                             <!-- strftime("%A %d-%B-%Y at %I:%M %p") -->
                         <td>
                             <%= attendance.punch_in_time.present? ? attendance.punch_in_time.strftime("%I:%M %p") : ".." %>

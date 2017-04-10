@@ -1,4 +1,4 @@
-ActiveAdmin.register Todo do
+ActiveAdmin.register Todo ,as: "DSR" do
 
   scope :research
   scope :task 
