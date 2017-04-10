@@ -12,10 +12,11 @@ class ApplyLeavesController < ApplicationController
   def create      
   	@apply_leave = current_developer.apply_leaves.new(params_apply_leave)
   	if @apply_leave.save
-      if params[:apply_leave][:leave_type] = "Paid"
-       @total_available_leave= @avail_leave - @apply_leave.total_leave
+      if params[:apply_leave][:leave_type] == "Paid"
+        @total_available_leave= @avail_leave - @apply_leave.total_leave
         current_developer.leave.update(available_leave:@total_available_leave)
       end
+      ActionCable.server.broadcast "admin:attendances", {message:"#{current_developer.email} apply leave"}
   		flash[:success]="Application submited success fully..."
   		redirect_to '/'
   	else

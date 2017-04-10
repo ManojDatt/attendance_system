@@ -26,6 +26,6 @@ match "/admin/developers/:id/download_attandence" => 'admin/developers#download_
 	get 'developer-profile'=> "attendances#get_developer_profile" , as: :get_developer_profile
 
 	# mount ActionCable.server => '/cable'
-	match '*path' => redirect('/'), via: [:get,:post]
+	# match '*path' => redirect('/'), via: [:get,:post]
 
 end
