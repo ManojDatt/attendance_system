@@ -234,3 +234,8 @@ hr {margin-top: 20px !important; margin-bottom: 20px !important; }
     background-color: red;
     color: white;
 }
+
+.radio_inline {
+    margin-left: 28%;
+    font-size: medium;
+}

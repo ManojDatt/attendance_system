@@ -2,6 +2,8 @@ ActiveAdmin.register ApplyLeave ,as: "Leave Application" do
   scope :Pending
   scope :Approved 
   scope :Rejected 
+  scope :Paid 
+  scope :Unpaid 
   
 permit_params :start_date,:end_date,:total_leave,:developer,:status
 	config.batch_actions = false
