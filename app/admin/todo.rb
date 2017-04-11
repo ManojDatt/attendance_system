@@ -16,7 +16,13 @@ ActiveAdmin.register Todo do
       end
 		column :task_time
 		column :task_type
-		column :project
+		column :project do |f|
+			if f.project.present?
+				f.project
+			else
+				"R&D"
+			end	
+		end
 		column :developer
 		column "Created Date", :created_at
 		actions

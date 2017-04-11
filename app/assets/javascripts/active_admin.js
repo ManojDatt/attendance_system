@@ -22,7 +22,7 @@ $(document).on('ready', function() {
           else{
               Notification.requestPermission(function(p){
                   if(p==='denied'){
-                      alert('Please allow notification');
+                      // alert('Please allow notification');
                   }
                   // else{
                   //     alert('allowed');

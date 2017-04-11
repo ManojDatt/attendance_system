@@ -5,7 +5,7 @@ ActiveAdmin.register ApplyLeave ,as: "Leave Application" do
   scope :Paid 
   scope :Unpaid 
   
-permit_params :start_date,:end_date,:total_leave,:developer,:status
+permit_params :start_date,:end_date,:total_leave,:developer,:status,:leave_type
 	config.batch_actions = false
 	actions :all , except:[:new]
 
@@ -26,6 +26,7 @@ permit_params :start_date,:end_date,:total_leave,:developer,:status
 		column :total_leave
 		column :developer
 		column :status
+		column :leave_type
 		column "Leave Date", :created_at
 		actions
 	end
@@ -40,6 +41,7 @@ permit_params :start_date,:end_date,:total_leave,:developer,:status
 			f.input :total_leave
 			f.input :developer
 			f.input :status
+			f.input :leave_type
 			f.input :reason
 		end
 		f.actions
@@ -52,6 +54,7 @@ permit_params :start_date,:end_date,:total_leave,:developer,:status
 			row :total_leave
 			row :developer
 			row :status
+			row :leave_type
 			row :reason
 			row :created_at
 			row :updated_at
