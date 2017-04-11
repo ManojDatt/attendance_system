@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406125537) do
+ActiveRecord::Schema.define(version: 20170411101147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170406125537) do
     t.integer  "developer_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "leave_type"
     t.index ["developer_id"], name: "index_apply_leaves_on_developer_id", using: :btree
   end
 
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20170406125537) do
     t.string   "domain"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.macaddr  "sign_in_mac"
     t.index ["email"], name: "index_developers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true, using: :btree
   end
@@ -125,14 +127,14 @@ ActiveRecord::Schema.define(version: 20170406125537) do
     t.index ["developer_id"], name: "index_leaves_on_developer_id", using: :btree
   end
 
-  create_table "notiications", force: :cascade do |t|
+  create_table "notifications", force: :cascade do |t|
     t.string   "message"
     t.boolean  "unseen",            default: true
     t.string   "notification_type"
     t.integer  "developer_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.index ["developer_id"], name: "index_notiications_on_developer_id", using: :btree
+    t.index ["developer_id"], name: "index_notifications_on_developer_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
@@ -159,7 +161,7 @@ ActiveRecord::Schema.define(version: 20170406125537) do
   add_foreign_key "apply_leaves", "developers"
   add_foreign_key "attendances", "developers"
   add_foreign_key "leaves", "developers"
-  add_foreign_key "notiications", "developers"
+  add_foreign_key "notifications", "developers"
   add_foreign_key "todos", "developers"
   add_foreign_key "todos", "projects"
 end

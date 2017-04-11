@@ -1,6 +1,6 @@
 class CreateNotiications < ActiveRecord::Migration[5.0]
   def change
-    create_table :notiications do |t|
+    create_table :notifications do |t|
       t.string :message
       t.boolean :unseen, default: true
       t.string :notification_type

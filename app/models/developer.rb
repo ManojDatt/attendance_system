@@ -6,7 +6,7 @@ class Developer < ApplicationRecord
   has_many :attendances,dependent: :destroy
   has_many :todos, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  has_one :leave,dependent: :destroy
+  has_one :leave, dependent: :destroy
   has_many :apply_leaves,class_name:"ApplyLeave",dependent: :destroy
 
   after_create :create_leave_record 
@@ -15,6 +15,8 @@ class Developer < ApplicationRecord
     @login = login
   end
 
+
+  
   def login
     @login || self.username || self.email
   end
@@ -33,8 +35,27 @@ class Developer < ApplicationRecord
   end 
 
   def create_leave_record
-    self.create_leave(:total_leave=> 1.5,:available_leave=> 1.5)
-    Developer.create_attendance(self)
+    if Time.current.mday <=15
+      self.create_leave(:total_leave=> 1,:available_leave=> 1)
+      Developer.create_attendance(self)
+    else
+      self.create_leave(:total_leave=> 0,:available_leave=> 0)
+      Developer.create_attendance(self)
+    end
+  end
+
+  ###==========   Add leave on every month's 1 st day
+  def self.add_leave
+    developers = Developer.all
+    developers.each do |developer|
+      if (Date.current.month - developer.created_at.month) >= 4
+        updated_total_leave = developer.leave.total_leave + 1.5
+        developer.leave.update(total_leave:updated_total_leave)
+      else
+         updated_total_leave = developer.leave.total_leave + 1
+        developer.leave.update(total_leave:updated_total_leave)
+      end  
+    end
   end
 
   def self.create_attendance(developer)
@@ -69,4 +90,10 @@ class Developer < ApplicationRecord
       end
 
   end
+
+private
+
+def password_required?
+  new_record? ? super : false
+end
 end

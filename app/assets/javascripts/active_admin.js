@@ -24,9 +24,7 @@ $(document).on('ready', function() {
                   if(p==='denied'){
                       // alert('Please allow notification');
                   }
-                  // else{
-                  //     alert('allowed');
-                  // }
+                  
               });
           }
 

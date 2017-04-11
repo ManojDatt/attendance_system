@@ -13,7 +13,7 @@ App.dsr = App.cable.subscriptions.create("DsrChannel", {
               alert('Please allow notification');
             }
             else{
-              notify = new Notification("New notification from manoj",
+              notify = new Notification("New notification",
               {
                 title: "Arka Softwares",
                 body: data['message'],

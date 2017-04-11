@@ -16,7 +16,7 @@ class ApplyLeavesController < ApplicationController
         @total_available_leave= @avail_leave - @apply_leave.total_leave
         current_developer.leave.update(available_leave:@total_available_leave)
       end
-      ActionCable.server.broadcast "admin:attendances", {message:"#{current_developer.email} apply leave"}
+      ActionCable.server.broadcast "admin:attendances", {message:"#{current_developer.email} apply leave", user:current_developer.name}
   		flash[:success]="Application submited success fully..."
   		redirect_to '/'
   	else

@@ -48,29 +48,28 @@
       <ul id="menu-content" class="menu-content collapse out">
         <li><i class="fa fa-user fa-lg">
           <a href="#">
-            <%=link_to"Developer Dashboard", root_path%>
+            <%=link_to ("<p>Developer Dashboard</p>").html_safe, root_path%>
           </a>
         </li>
-        <li><p class="user_email_data">Login as &nbsp;<%=current_developer.email%></p></li>
+        <li>
+        <%=link_to ("<p> Login As #{current_developer.name}").html_safe, get_developer_profile_path %></li>
         <li >
           <% if punch_out? %>
-          <%=link_to "Punch-Out", punch_out_path%>
+          <%=link_to ("<p>Punch-Out</p>").html_safe, punch_out_path%>
           <% end %> 
         </li> 
-        <li>
-          <%=link_to "Profile", get_developer_profile_path%>
-        </li>         
-          <li><%=link_to "Today Task", new_todo_path%></li>
-          <li><%=link_to "R & D", today_research_todos_path%></li>             
+                
+          <li><%=link_to ("<p>Today Task</p>").html_safe, new_todo_path%></li>
+          <li><%=link_to ("<p>R & D</p>").html_safe, today_research_todos_path%></li>             
          <li>
-          <%=link_to "Leave Balance",  leaves_path  ,method: :get%>
+          <%=link_to ("<p>Leave Balance</p>").html_safe,  leaves_path  ,method: :get%>
         </li>
 
         <li>
-          <%=link_to "Applied Leave",  apply_leaves_path  ,method: :get%>
+          <%=link_to ("<p>Applied Leave</p>").html_safe,  apply_leaves_path  ,method: :get%>
         </li> 
          <li>
-          <%= link_to "Log Out", destroy_developer_session_path , method: :delete%>
+          <%= link_to ("<p>Log Out</p>").html_safe, destroy_developer_session_path , method: :delete%>
         </li>      
       </ul>
     </div>
@@ -81,20 +80,6 @@
     <%= yield %>
   </div>
   <script type="text/javascript">
-
-    // if(! window.Notification){
-    //           alert('Sorry notification not support');
-    //       }
-    //       else{
-    //           Notification.requestPermission(function(p){
-    //               if(p==='denied'){
-    //                   alert('Please allow notification');
-    //               }
-    //               // else{
-    //               //     alert('allowed');
-    //               // }
-    //           });
-    //       }
 
     $("#price_form_btn").click(function(){
       $("#price_form_id").submit();

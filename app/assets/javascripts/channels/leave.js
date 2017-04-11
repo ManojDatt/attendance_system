@@ -13,7 +13,7 @@ App.leave = App.cable.subscriptions.create("LeaveChannel", {
               alert('Please allow notification');
             }
             else{
-              notify = new Notification("New notification from manish",
+              notify = new Notification(("New notification ").concat(data['user']),
               {
                 title: "Arka Softwares",
                 body: data['message'],

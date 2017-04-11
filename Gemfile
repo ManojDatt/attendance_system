@@ -41,5 +41,5 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'active_admin_theme'
 gem 'cancan'
 gem 'clockwork'
-
-
+gem 'macaddr'
+gem 'screencap'

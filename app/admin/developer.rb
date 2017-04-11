@@ -1,6 +1,6 @@
 ActiveAdmin.register Developer do
 
-	permit_params :email,:username,:domain,:password
+	permit_params :email,:username,:domain,:password, :sign_in_mac
 	config.batch_actions = false
 	actions :all
 
@@ -22,6 +22,7 @@ ActiveAdmin.register Developer do
 		column :email
 		column :username
 		column :domain
+		column :sign_in_mac
 		column "Created Date", :created_at
 		actions
 	end
@@ -34,8 +35,9 @@ ActiveAdmin.register Developer do
 		f.inputs "Developer" do
 			f.input :username
 			f.input :email
-			f.input :password
+			f.input :password, input_html:{include_blank: false}
 			f.input :domain
+			f.input :sign_in_mac, as: :string
 		end
 		f.actions
 	end
@@ -45,6 +47,7 @@ ActiveAdmin.register Developer do
 			row :email
 			row :username
 			row :domain
+			row :sign_in_mac
 			row :sign_in_count
 			row :current_sign_in_at
 			row :last_sign_in_at

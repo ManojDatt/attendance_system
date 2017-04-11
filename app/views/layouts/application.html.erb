@@ -68,5 +68,19 @@
 
 
 <% end%>
+<%=notice%>
+<% if notice.present? %>
+  <script>
+    Lobibox.alert('warning', {
+      title:"Arka Softwares",
+      delay: 5000,  
+      delayIndicator: true,
+      msg: "<%= notice %>",
+      icon: false,
+      sound:false
+    });
+  </script>
+<% end%>
+
 </body>
 </html>

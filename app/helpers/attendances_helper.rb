@@ -13,7 +13,7 @@ module AttendancesHelper
 	def today_early_out(attendance)
 		early_out_datetime = attendance.early_out
 		if early_out_datetime.hour < attendance.punch_out_at
-	        total_early_min = ((attendance.punch_in_time.hour * 60)+ attendance.punch_in_time.min )-(early_out_datetime.hour*60 + early_out_datetime.min)
+	        total_early_min = (early_out_datetime.hour*60 + early_out_datetime.min) - ((attendance.punch_in_time.hour * 60)+ attendance.punch_in_time.min )
 	        hour, min = total_early_min.divmod(60)
 	        p total_early_min.divmod(60)
 	        "%02d hour: %02d min" % [hour, min]
