@@ -16,6 +16,21 @@ $(document).on('ready', function() {
    
   });
 
+  if(! window.Notification){
+              alert('Sorry notification not support');
+          }
+          else{
+              Notification.requestPermission(function(p){
+                  if(p==='denied'){
+                      alert('Please allow notification');
+                  }
+                  
+              });
+          }
+
+
 })
+
+
 
 

@@ -6,4 +6,5 @@ class LeavesController < ApplicationController
 		@leave = current_developer.leave		
 	end
 	
+
 end

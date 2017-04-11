@@ -7,14 +7,14 @@ ActiveAdmin.register Todo ,as: "DSR" do
 
 	permit_params :task_name,:task_time,:task_type,:project,:developer
 	config.batch_actions = false
-	actions :all,except:[:new,:destroy]
+	actions :all,except:[:new]
 
 	index download_links: [:csv] do
 		# id_column
 		column "Task name" do |body|
               truncate(body.task_name, omision: "...", length: 50)
       end
-		column :task_time
+		column "Task Duration (H:M)",:task_time
 		column :task_type
 		column :project
 		column :developer

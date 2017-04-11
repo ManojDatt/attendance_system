@@ -30,7 +30,7 @@
                     <% end%>
                     <tr>
                     <td><%= index+1 %></td>
-                        <td style="background-color: <%=day_color(attendance.created_at.strftime("%A"))%>; color:white;"><%= attendance.created_at.strftime("%A")%>/<%= attendance.created_at.strftime("%d-%B-%Y")%></td>
+                        <td style="background-color: <%=day_color(attendance.created_at.strftime("%A"))%>; color:white;"><%= attendance.created_at.strftime("%A")%><br><%= attendance.created_at.strftime("%d-%B-%Y")%></td>
                         <td> <%= attendance.first_half==true ? "PR" : attendance.first_half==false ? "AB" : ".." %></td>
 
                        

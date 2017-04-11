@@ -26,12 +26,14 @@ class ApplicationController < ActionController::Base
  	 end
   end
   
-# =======
-#     if resource_name == :developer	 	
-#      '/'
-#    elsif resource_name == :admin_user
-#      admin_root_url
-#    end
-#  end  
-# >>>>>>> 45ef2c678690c8e16bac0c9c7b31f57495eebf99
+  def verrify_mac_address
+        if current_developer.present? and (current_developer.sign_in_mac != Mac.addr)
+          scope = Devise::Mapping.find_scope!(current_developer)
+          redirect_path = after_sign_out_path_for(scope)
+          Devise.sign_out_all_scopes ? sign_out : sign_out(scope)
+          flash[:warning]= "Please login from your last login system."
+          redirect_to redirect_path
+        end
+  end
+
 end

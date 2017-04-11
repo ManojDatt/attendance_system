@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410051326) do
+ActiveRecord::Schema.define(version: 20170411101147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170410051326) do
     t.integer  "developer_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "leave_type"
     t.index ["developer_id"], name: "index_apply_leaves_on_developer_id", using: :btree
   end
 
@@ -112,6 +113,7 @@ ActiveRecord::Schema.define(version: 20170410051326) do
     t.string   "domain"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.macaddr  "sign_in_mac"
     t.index ["email"], name: "index_developers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true, using: :btree
   end

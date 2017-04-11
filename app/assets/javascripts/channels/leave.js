@@ -1,4 +1,4 @@
-App.dsr = App.cable.subscriptions.create("DsrChannel", {
+App.leave = App.cable.subscriptions.create("LeaveChannel", {
   connected: function() {
    
   },
@@ -13,7 +13,7 @@ App.dsr = App.cable.subscriptions.create("DsrChannel", {
               alert('Please allow notification');
             }
             else{
-              notify = new Notification("New notification",
+              notify = new Notification(("New notification ").concat(data['user']),
               {
                 title: "Arka Softwares",
                 body: data['message'],

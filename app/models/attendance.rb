@@ -28,20 +28,36 @@ class Attendance < ApplicationRecord
     	  end
     end
 
+    def self.get_attendances(date)
+      date = date.to_date
+      where("extract(month from created_at) = ? AND extract(year from created_at) = ?",date.month, date.year)
+    end
+
     def self.first_half
       developers = Developer.all.includes(:attendances)
       if developers.present?
         developers.each do |current_developer|
           current_developer.attendances.each do |attendance|
-           if (attendance.punch_in_time.present?) and (attendance.punch_in_time.hour <= 10)
+           if (attendance.punch_in_time.present?) and (attendance.punch_in_time.hour <= attendance.punch_in_at)
               if (Time.current >= (attendance.punch_in_time.hour + 4.hours))
-                p "PR"
-                attendance.update(first_half: true)
+                if not attendance.punch_out_time.present?
+                  p "PR"
+                  attendance.update(first_half: true)
+                else
+                  if ((attendance.punch_out_time.hour - attendance.punch_in_time.hour) >=4)
+                    p "PR"
+                    attendance.update(first_half: true)
+                  else
+                    p "AB"
+                    attendance.update(first_half: false)
+                  end
+                  
+                end
               else
-                ".."
+                p".."
               end
             ##   If User punch in after 10 AM 
-            elsif (attendance.punch_in_time.present? and attendance.punch_in_time.hour > 10)
+            elsif (attendance.punch_in_time.present? and attendance.punch_in_time.hour > attendance.punch_in_at)
               p "AB"
               attendance.update(first_half: false)
             else
@@ -50,16 +66,16 @@ class Attendance < ApplicationRecord
                 p "AB"
                 attendance.update(first_half: false)
                elsif attendance.week_off
-                "WO"
+                p"WO"
                elsif (attendance.created_at.to_date == Date.current) and (not attendance.week_off)
-                  if Time.current.hour > 10
+                  if Time.current.hour > attendance.punch_in_at
                     p "AB"
                     attendance.update(first_half: false)
                   else
-                    ".."
+                   p ".."
                   end
                else
-                ".."
+               p ".."
                end
 
             end   
@@ -74,22 +90,23 @@ class Attendance < ApplicationRecord
         developers.each do |current_developer|
           current_developer.attendances.each do |attendance|
            
-
+            ##  If User punch in at 2 PM
             if (attendance.punch_in_time.present?) and (attendance.punch_in_time.hour == 14)
               if (Time.current >= (attendance.punch_in_time.hour + 5.hours))
                 p "PR"
-                attendance.update(first_half: true)
+                attendance.update(second_half: true)
               else
-                ".."
+                p".."
               end
             ##   If User punch in before 2 PM then check 2nd half after 7 PM
             elsif (attendance.punch_in_time.present?) and (attendance.punch_in_time.hour < 14)
               if attendance.punch_out_time.present? 
                 if attendance.punch_out_time.hour > 19
                   p"PR"
-                  attendance.update(first_half: true)
+                  attendance.update(second_half: true)
                 elsif 
-                  ".."
+                  p"AB"
+                  attendance.update(second_half: false)
                 end
               end
             ##   If User punch in after 2 PM then 2nd half will be AB 
@@ -97,13 +114,13 @@ class Attendance < ApplicationRecord
               ##  If User completes 4 hours then he will be PR in second half
               if (Date.current >= (attendance.punch_in_time + 4.hour))
                 p"PR"
-                attendance.update(first_half: true)
+                attendance.update(second_half: true)
               else
                 if attendance.punch_out_time.present? and attendance.punch_out_time.hour < 4 
                   p "AB"
-                  attendance.update(first_half: false)
+                  attendance.update(second_half: false)
                 else
-                  ".."
+                 p ".."
                 end
 
               end       
@@ -112,18 +129,18 @@ class Attendance < ApplicationRecord
                ##   Date that is less then current date and some have week offs
                if (attendance.created_at.to_date < Date.current) and (not attendance.week_off)
                 p"AB"
-                attendance.update(first_half: false)
+                attendance.update(second_half: false)
                elsif attendance.week_off
-                "WO"
+                p"WO"
                elsif (attendance.created_at.to_date == Date.current) and (not attendance.week_off)
-                if Time.current.hour > 10
-                  p"AB"
-                  attendance.update(first_half: false)
-                else
-                  ".."
-                end
+                  if Time.current.hour > 10
+                    p"AB"
+                    attendance.update(second_half: false)
+                  else
+                   p ".."
+                  end
                else
-                ".."
+               p ".."
                end
 
             end       

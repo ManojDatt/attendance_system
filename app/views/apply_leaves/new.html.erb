@@ -1,124 +1,132 @@
 <div class="container" id="main">
-	<h2>Leave Application</h2>
-	<link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.1/themes/ui-lightness/jquery-ui.css">
 
-	<hr>
-	<%= form_for @apply_leave ,url:   apply_leaves_path  ,method: :post, html:{id:"leave_application_form" } do |f| %>
+    <h2>Leave Application</h2>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.1/themes/ui-lightness/jquery-ui.css">
 
-		<div class="panel panel-default">
-			<div class="panel-body">
+    <hr>
+    <%= form_for @apply_leave ,url:   apply_leaves_path  ,method: :post, html:{id:"leave_application_form" } do |f| %>
 
-				<div class="form-group col-md-12">
-					<div class="col-md-6">
-						<label for="example-text-input" class="col-2 col-form-label">From</label>
-					
-					<!--  -->
-					<div class="form-group">
-						<%=f.text_field :start_date ,class: "form-control"%>
-					</div>
-					</div>
-					<div class="col-md-6">
-						<label for="example-text-input" class="col-2 col-form-label">To</label>
-									
-					<div class="form-group">
-						<%=f.text_field :end_date ,class: "form-control"%>
-					</div>
-                    </div>  
-				</div>
+    <div class="panel panel-default">
+        <div class="panel-body">
+        <div class="col-md-6 radio_inline">
+                <!-- <label for="example-text-input" class="col-2 col-form-label">Leave Type</label> -->
+                    <label class="radio-inline">
+                    <input type="radio" name= "apply_leave[leave_type]" value='Paid'>Paid
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name= "apply_leave[leave_type]" value='Unpaid'>Unpaid
+                    </label>
+        </div>
+            <div class="form-group col-md-12">                
+                <div class="col-md-6">
+                    <label for="example-text-input" class="col-2 col-form-label">From</label>					
+                    <div class="form-group">
+                        <%=f.text_field :start_date ,class: "form-control"%>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="example-text-input" class="col-2 col-form-label">To</label>
 
-				<div class="form-group col-md-12" >	
-					
-						<label for="example-text-input" class="col-2 col-form-label">Reason</label>
-					
-						<%=f.text_area :reason ,class: "form-control"%>
-					
-				</div>
-               
+                    <div class="form-group">
+                        <%=f.text_field :end_date ,class: "form-control"%>
+                    </div>
+                </div>  
+            </div>
 
-                <center>
+            <div class="form-group col-md-12" >	
+
+                <label for="example-text-input" class="col-2 col-form-label">Reason</label>
+
+                <%=f.text_area :reason ,class: "form-control"%>
+
+            </div>
+        
+             <center>
                  <div class="form-group">
                 <%=f.submit "Apply Leave" ,class: "btn btn-success"%>
                 </div>
                 </center>
-			</div>
-             
-		</div>
-       
-	<%end%>
+    </div>
+</div>
+
+<%end%>
+
 </div>
 
 <script type="text/javascript">
     $(document).ready(function () {
-    
+
         $("#apply_leave_start_date").datepicker({		   
-             // minDate:0,
-             // stepMonths:0,
-            dateFormat: "dd/mm/yy",
-            onSelect: function (selected) {
+// minDate:0,
+// stepMonths:0,
+dateFormat: "dd/mm/yy",
+onSelect: function (selected) {
 
-                if (selected) {
-                    console.log("selected date-----"+selected);
-                    var dateAr = selected.split('/');
-                    var newDate = dateAr[2] + '/' + dateAr[1] + '/' + dateAr[0];
+    if (selected) {
+        console.log("selected date-----"+selected);
+        var dateAr = selected.split('/');
+        var newDate = dateAr[2] + '/' + dateAr[1] + '/' + dateAr[0];
 
-                    newDate = new Date(newDate);
+        newDate = new Date(newDate);
 
-                    newDate.setDate(newDate.getDate());
-                    $("#apply_leave_end_date").datepicker("option", "minDate", newDate);
-                }
 
-            }
+        newDate.setDate(newDate.getDate());
+        console.log("new date------"+newDate);
+        $("#apply_leave_end_date").datepicker("option", "minDate", newDate);
+    }
 
-        });
+}
+
+});
 
         $("#apply_leave_end_date").datepicker({
-            
+
             minDate: 0,
-            // stepMonths:0,
-            dateFormat: "dd/mm/yy",
-            onSelect: function (selected) {
-                $("#apply_leave_start_date").datepicker("option", "maxDate", selected);
+// stepMonths:0,
+dateFormat: "dd/mm/yy",
+onSelect: function (selected) {
+    $("#apply_leave_start_date").datepicker("option", "maxDate", selected);
+}
+});
+
+
+        $("#leave_application_form").validate({
+            rules: {            
+                "apply_leave[start_date]": {
+                    required: true
+                },
+
+                "apply_leave[end_date]": {
+                    required: true
+                },
+
+                "apply_leave[reason]": {
+                    required: true,
+                    minlength: 10,
+                    maxlength:50
+                }
+            },
+            messages:{
+
+                "apply_leave[start_date]": {
+                    required: "Please select start date"
+                },
+
+                "apply_leave[end_date]": {
+                    required: "Please select end date"
+                },
+
+                "apply_leave[reason]": {
+                    required: "Please enter reason",
+                    minlength: "Please enter minimum 10 characters",
+                    maxlength:"Please enter no more than 50 characters"
+                }
+            },
+            submitHandler: function(form) {
+                form.submit();
             }
+
         });
-
-
-	$("#leave_application_form").validate({
-		rules: {            
-             "apply_leave[start_date]": {
-                required: true
-            },
-
-             "apply_leave[end_date]": {
-                required: true
-            },
-
-             "apply_leave[reason]": {
-                required: true,
-                minlength: 10,
-                maxlength:50
-            }
-        },
-        messages:{
-
-             "apply_leave[start_date]": {
-                 required: "Please select start date"
-            },
-
-             "apply_leave[end_date]": {
-                 required: "Please select end date"
-            },
-
-             "apply_leave[reason]": {
-                required: "Please enter reason",
-                minlength: "Please enter minimum 10 characters",
-                maxlength:"Please enter no more than 50 characters"
-            }
-        },
-        submitHandler: function(form) {
-            form.submit();
-        }
-
-	});
 
     });
 </script>
