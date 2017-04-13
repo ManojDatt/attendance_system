@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700);
 @import url(bootstrap.css);
 @import url(lobibox.css);
+@import url(jquery-ui.css);
 /*common*/
 .no-margin{margin:0px !important;}
 .no-padding{padding: 0px !important;}

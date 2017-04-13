@@ -1,13 +1,13 @@
 class AttendancesController < ApplicationController
   layout "developer_layout"
   before_action :authenticate_developer!
-  before_action :verrify_mac_address
+  before_action :verify_mac_address
   def index
      # binding.pry
      #s=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
      #s.ip_address
      #Mac.addr
-     
+    @notification = current_developer.notifications.where(unseen:true).count 
     if current_developer.attendances.exists?
       punch_date = current_developer.attendances.where("created_at::date=?",Date.current).first 
       unless punch_date.punch_in_status
@@ -24,7 +24,10 @@ class AttendancesController < ApplicationController
           
        end
       if params[:date].present?
-        @attendances = current_developer.attendances.gert_attendances(params[:date]).page(params[:page]).per(31)
+        date = params[:date].split("/")
+        month = date[0]
+        year = date[2]
+        @attendances = current_developer.attendances.where("extract(month from created_at) = ? AND extract(year from created_at) = ?",month, year).page(params[:page]).per(31)
       else
         @attendances = current_developer.attendances.page(params[:page]).per(31)
       end

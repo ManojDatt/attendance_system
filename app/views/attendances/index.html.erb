@@ -2,10 +2,13 @@
 <div class="main" id="main">
     <h2>Dailly Attendances</h2>
     <hr>
-    <div class="form-control">
-        
+    <div class="form-group col-md-4 pull-right dsr_action">
+        <form id="filter_by_form" method="post">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <input type="text" name="date" id="filter_date" class="form-control" placeholder="Filter By Date">
+        </form>
     </div>
-    <div class="main-content">
+    <div class="main-content col-md-12">
         <div class="table-responsive">          
             <table class="table table-bordered">
                 <thead>

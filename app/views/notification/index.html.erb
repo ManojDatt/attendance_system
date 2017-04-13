@@ -1,0 +1,35 @@
+
+<div class="main" id="main">
+    <h2>Notifications</h2>
+    <hr>
+    <div class="main-content">
+        <div class="table-responsive">          
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="th-default">Notification Type</th>
+                        <th >Message</th> 
+                                                                    
+                    </tr>
+                </thead>
+                <tbody>
+                <% @notifications.each_with_index do |value, index|%>
+                   
+                    <tr>
+                        <td><%=value.notification_type%></td>                        
+                        <td>
+                            <%=value.message%>
+                        </td>
+                        
+                       
+                    </tr>
+                    <%end%>
+                </tbody>
+
+            </table>
+             
+                  
+
+        </div>
+    </div>
+</div>

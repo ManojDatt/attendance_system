@@ -19,7 +19,7 @@ ActiveAdmin.register Todo ,as: "DSR" do
 		column :project
 		column :developer
 		column "Created Date", :created_at
-		column() {|todo| link_to "Reply (#{todo.dsr_replies.count})", admin_reply_dsr_path(todo), method: :post}
+		column() {|todo| link_to ("Reply <span style='color:green;'>(#{todo.dsr_replies.where(seen:false).count})</span>").html_safe, admin_reply_dsr_path(todo), method: :post}
 		actions
 	end
 
@@ -57,6 +57,8 @@ ActiveAdmin.register Todo ,as: "DSR" do
 		if params['commit']=="Reply"
 			flash[:warning] = "You have repleid on DSR # #{@dsr.id}."
 			@dsr.dsr_replies.create(message:params[:reply][:message])
+			message= "You have received one reply on your DSR #{@dsr.id}."
+			@developer.notifications.create(message: message, notification_type:'dsr-reply')
 			redirect_to admin_dsrs_path
 		end
 	end

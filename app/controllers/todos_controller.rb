@@ -4,9 +4,9 @@ class TodosController < ApplicationController
 	layout "developer_layout"
 	def index
 		if params[:date].present?
-			p""
+		 @dsrs = current_developer.todos.where("created_at::date = ?", params[:date])
 		else	
-		@dsrs = current_developer.todos.where("created_at::date >= ?", (Time.current.-2.day).to_date)
+		 @dsrs = current_developer.todos.where("created_at::date >= ?", (Time.current.-2.day).to_date)
 		end
 	end
 	def new
