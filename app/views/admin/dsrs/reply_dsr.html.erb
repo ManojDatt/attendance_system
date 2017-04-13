@@ -1,0 +1,55 @@
+
+<div id="main_content_wrapper">
+          <div id="main_content">
+            <div class="panel">
+              <h3>Developer # <%=@developer.name%></h3>
+              <div class="panel_contents">
+                <div class="attributes_table todo" id="attributes_table_todo_12">
+                  <table border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr class="row row-project">
+                      <% if @dsr.project.present? %>
+                      <th>Project</th>
+                      
+                      <td><a href="/admin/projects/<%=@dsr.project.id%>"><%=@dsr.project.name%></a></td>
+                   		<% end %>
+                      <th>Task Name</th>
+                      <td><%=@dsr.task_name%></td>
+                    </tr>
+                    <tr class="row row-task_time">
+                      <th>Task Time</th>
+                      <td><%=@dsr.task_time%></td>
+                   
+                      <th>Task Type</th>
+                      <td><%=@dsr.task_type%></td>
+                    </tr>
+                    
+                  </tbody>
+
+                  </table>
+                  <table>
+	                  <% @replies.each_with_index do |value, index|%>
+		                  <tr style="background-color: rgba(94, 163, 211, 0.3);">
+			                  <td style="width:20px; padding: 1em;"><%=index+1%>.</td>
+			                  <td><%= value.message%></td>
+		                  </tr>
+	                  <% end%>
+                  </table>
+                  <%= form_for :reply, url: admin_reply_dsr_path(@dsr), method: "post" do |f| %>
+                  
+                  
+                  <%=f.text_area :message, class:"formtastic inputs", style:"width:98%; height:60px;" %>
+                 
+                  <fieldset class="actions">
+                  <ol>
+                  <li class="action input_action " id="developer_submit_action">
+                  	<%=f.submit "Reply", class:"btn btn-primary"%> </li>
+                  <li class="cancel"><a href="/admin/dsrs">Cancel</a></li>
+                  </ol>
+                  </fieldset>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+

@@ -1,0 +1,68 @@
+<div class="main" id="main">
+    <h2>Dailly Status Report</h2>
+    <div class="pull-right col-md-8 dsr_action">
+    
+        <div class="col-md-2">
+            <%=link_to ("Submit DSR"), new_todo_path, class:"btn btn-primary" %>
+        </div>
+        <div class="col-md-3">
+            <%=link_to ("Submit R & D"), today_research_todos_path, class:"btn btn-primary" %>
+        </div>
+        <div class="col-md-3">
+            <form id="filter_by_form" action="/todos" method="post">
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                <input type="text" name="date" id="filter_date" class="form-control" placeholder="Filter By Date">
+            </form>
+        </div>
+
+    </div>
+    
+    <div class="main-content col-md-12">
+        <div class="table-responsive">          
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="th-default">Dsr Number</th>
+                         
+                        <th class="th-default">Duration(H:M)</th> 
+                        <th class="th-default">Project Name</th> 
+                        <th class="th-default">Task Type</th> 
+                        <th class="th-default">Submitted On</th>
+                        <th class="th-default">Action</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                <% if @dsrs.present? %>
+                   <% @dsrs.each_with_index do |value, index|%>
+                    <tr>
+                        <td class="td-default">#<%=value.id %></td>
+                        
+                        <td class="td-default"><%=value.task_time%></td> 
+                        <td class="td-default">
+                        <% if value.project.present? %>
+                        <%=value.project.name%>
+                        <% else%>
+                        R & D
+                        <% end %>
+                        </td> 
+                        <td class="td-default"><%=value.task_type%></td> 
+                    <td class="td-default"><%=value.created_at.strftime("%A %d-%B-%Y at %I:%M %p") %></td>
+                    
+                    <td class="th-default"> 
+                    <% if count_unseen_reply(value) > 0 %>
+                    <%=link_to ("View <span class='badge'>(#{count_unseen_reply(value)})</span>").html_safe, todo_path(value.id)%>
+                        <% else %>
+                        <%=link_to ("View"), todo_path(value.id)%>
+                        <% end %>
+                    </td>
+                    </tr>
+                    <% end %>
+                <% end %>
+                </tbody>
+
+            </table>           
+
+        </div>
+    </div>
+</div>
+

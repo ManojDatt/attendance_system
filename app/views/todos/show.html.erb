@@ -1,0 +1,57 @@
+<div class="main" id="main">
+    <h2>DSR Details</h2>
+    <hr>
+    <div class="main-content">
+        <div class="table-responsive">          
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Attribute</th><th>Value</th>
+                        
+                    </tr>
+                    
+                </thead>
+                <tbody>
+                <tr>
+                        <th>Dsr Number #</th><td><%= @dsr.id%></td>
+                        
+                    </tr>
+                     <tr>
+                        <th>Task Type</th><td><%= @dsr.task_type%></td>
+                        
+                    </tr>
+                     <tr>
+                        <th>Task Name</th><td><%= @dsr.task_name%></td>
+                        
+                    </tr>
+
+                    <tr>
+                        <th>Task Duration (H:M)</th><td><%= @dsr.task_time%></td>
+                        
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <h3>Reply:</h3><br>
+            <ul class="list-group">
+            <% if @replies.present? %>
+                <% @replies.each_with_index do |reply, index|%>
+                    <% if (Time.current.min-reply.updated_at.min) <=2%>
+                    <li class="list-group-item" style="background-color: rgba(94, 163, 211, 0.3);"><%=index+1%>. &nbsp;<%=reply.message%></li>
+                    <% else%>
+                     <li class="list-group-item"><%=index+1%>. &nbsp;<%=reply.message%></li>
+                    <% end %>
+                <% end %>
+            <% end %>
+            </ul>
+            <%=form_for :reply, url:reply_dsr_todo_path(@dsr) , method:"POST" do |f|%>
+            <div class="form-group">
+            <%=f.text_area :message, class:"form-control" %>
+            </div>
+            <%=f.submit "Reply", class:"btn btn-primary" %>
+            <%=link_to "DSR" , todos_path,class: "btn btn-default"%>
+            <% end %>
+        </div>
+    </div>
+</div>

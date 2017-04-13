@@ -7,13 +7,13 @@ ActiveAdmin.register Todo ,as: "DSR" do
 
 	permit_params :task_name,:task_time,:task_type,:project,:developer
 	config.batch_actions = false
-	actions :all,except:[:new]
+	actions :all,except:[:new, :destroy]
 
 	index download_links: [:csv] do
-		# id_column
+		column "DSR Number", :id
 		column "Task name" do |body|
               truncate(body.task_name, omision: "...", length: 50)
-      end
+        end
 		column "Task Duration (H:M)",:task_time
 		column :task_type
 		column :project do |f|
@@ -25,6 +25,7 @@ ActiveAdmin.register Todo ,as: "DSR" do
 		end
 		column :developer
 		column "Created Date", :created_at
+		column() {|todo| link_to ("Reply <span style='color:green;'>(#{todo.dsr_replies.where(seen:false).count})</span>").html_safe, admin_reply_dsr_path(todo), method: :post}
 		actions
 	end
 
@@ -54,4 +55,17 @@ ActiveAdmin.register Todo ,as: "DSR" do
 			row :updated_at
 		end
 	end 
+
+	member_action :reply_dsr do
+		@dsr = Todo.find_by(:id=>params[:id])
+		@developer = @dsr.developer
+		@replies = @dsr.dsr_replies
+		if params['commit']=="Reply"
+			flash[:warning] = "You have repleid on DSR # #{@dsr.id}."
+			@dsr.dsr_replies.create(message:params[:reply][:message])
+			message= "You have received one reply on your DSR #{@dsr.id}."
+			@developer.notifications.create(message: message, notification_type:'dsr-reply')
+			redirect_to admin_dsrs_path
+		end
+	end
 end

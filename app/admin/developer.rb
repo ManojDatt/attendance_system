@@ -2,7 +2,7 @@ ActiveAdmin.register Developer do
 
 	permit_params :email,:username,:domain,:password, :sign_in_mac
 	config.batch_actions = false
-	actions :all
+	actions :all, except:[:destroy]
 
 	action_item :view, only: :show do
 		link_to 'Today DSR',  daily_path(developer) , method: :get,:class=>"line_spacing" 

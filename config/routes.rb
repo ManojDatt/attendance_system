@@ -1,31 +1,39 @@
 Rails.application.routes.draw do  
+
 match "/admin/developers/:id/daily" => 'admin/developers#daily', via: :get, as: "daily"
 match "/admin/developers/:id/monthly" => 'admin/developers#monthly', via: :get, as: "monthly"
 match "/admin/leave_applications/:id/accept" => 'admin/leave_applications#accept', via: :get, as: "accept"
 match "/admin/leave_applications/:id/reject" => 'admin/leave_applications#reject', via: :get, as: "reject"
 match "/admin/developers/:id/get_attandence" => 'admin/developers#get_attandence', via: :get, as: "get_attandence"
 match "/admin/developers/:id/download_attandence" => 'admin/developers#download_attandence', via: :get, as: "download_attandence"
+match "/admin/dsrs/:id/reply_dsr"=> "admin/dsrs#reply_dsr", via: [:get, :post], as: "admin_reply_dsr"
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  ActiveAdmin.routes(self)
-	# devise_for :admins, skip: :registrations
-	# mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-	resources :projects
-	resources :leaves,only:[:index]
-	resources :apply_leaves,only:[:index,:new,:create]
-	resources :todos,only:[:new,:create] do
-		collection do
-			get 'today_research'
-			post 'submit_research'
-		end
+devise_for :admin_users, ActiveAdmin::Devise.config
+ActiveAdmin.routes(self)
+# devise_for :admins, skip: :registrations
+# mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+resources :projects
+resources :leaves,only:[:index]
+resources :apply_leaves,only:[:new,:create]
+match '/todos'=>'todos#index', as: 'todos', via: [:get, :post]
+resources :todos,only:[:index,:new,:create,:show] do
+	collection do
+		get 'today_research'
+		post 'submit_research'
 	end
-	resources :attendances, only:[:index]
-	devise_for :developers, skip: :registrations
-	root "attendances#index"
-	get "punch_out"=>"attendances#punch_out", as: :punch_out
-	get 'developer-profile'=> "attendances#get_developer_profile" , as: :get_developer_profile
+	member do
+		post "reply_dsr"
+	end	
+end
+resources :attendances, only:[:index]
+resources :notification, only:[:index]
+devise_for :developers, skip: :registrations
+root "attendances#index"
+match '/'=> "attendances#index", via: [:get, :post]
+get "punch_out"=>"attendances#punch_out", as: :punch_out
+get 'developer-profile'=> "attendances#get_developer_profile" , as: :get_developer_profile
 
-	# mount ActionCable.server => '/cable'
-	# match '*path' => redirect('/'), via: [:get,:post]
+# mount ActionCable.server => '/cable'
+# match '*path' => redirect('/'), via: [:get,:post]
 
 end

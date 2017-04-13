@@ -17,7 +17,7 @@ App.dsr = App.cable.subscriptions.create("DsrChannel", {
               {
                 title: "Arka Softwares",
                 body: data['message'],
-                icon:"https://yt3.ggpht.com/-RgjHlrXsIjU/AAAAAAAAAAI/AAAAAAAAAAA/1QbP-sHSI1M/s88-c-k-no-mo-rj-c0xffffff/photo.jpg",
+                icon:"/assets/logo.png",
                 tag:"punching",
                 dir: 'ltr',
                 // sound: '/assets/sounds/sound6.ogg'
