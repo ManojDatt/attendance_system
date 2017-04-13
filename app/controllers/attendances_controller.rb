@@ -7,6 +7,7 @@ class AttendancesController < ApplicationController
      #s=Socket.ip_address_list.detect{|intf| intf.ipv4_private?}
      #s.ip_address
      #Mac.addr
+     p Socket.gethostname
     @notification = current_developer.notifications.where(unseen:true).count 
     if current_developer.attendances.exists?
       punch_date = current_developer.attendances.where("created_at::date=?",Date.current).first 
@@ -20,7 +21,7 @@ class AttendancesController < ApplicationController
             punch_date.update(punch_in_time: Time.current, lat_in: lat_in, punch_in_status: true)
             message = "#{current_developer.name} has punch in at #{Time.current.strftime('%A %H:%M %p')}" 
             notification_type = 
-            current_developer.notifications.create(message:message, notification_type:"")
+            current_developer.notifications.create(message:message, notification_type:"attendance")
           
        end
       if params[:date].present?

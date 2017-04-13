@@ -3,30 +3,40 @@
     <h2>Notifications</h2>
     <hr>
     <div class="main-content">
-        <div class="table-responsive">          
+        <div class="table-responsive">    
+             <% if @notifications.present? %>      
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th class="th-default">Notification Type</th>
-                        <th >Message</th> 
+                        
+                        <th >Message</th>
+                        <th class="th-default">Received On </th>  
                                                                     
                     </tr>
                 </thead>
                 <tbody>
+               
                 <% @notifications.each_with_index do |value, index|%>
                    
                     <tr>
                         <td><%=value.notification_type%></td>                        
                         <td>
-                            <%=value.message%>
+                            <%=value.created_at.strftime("%A %d-%B-%Y at %I:%M %p") %>
                         </td>
                         
                        
                     </tr>
                     <%end%>
-                </tbody>
+                     </tbody>
 
             </table>
+                <% else %>
+                <div class="alert alert-danger alert-dismissable">
+                
+                  <strong>Information!</strong> No notification !.
+                </div>
+                <% end %>    
+               
              
                   
 

@@ -1,7 +1,7 @@
 ActiveAdmin.register Leave do
 permit_params :total_leave,:available_leave,:developer
 	config.batch_actions = false
-	actions :all,except:[:new]
+	actions :all,except:[:new,:destroy]
 
 	index download_links: [:csv] do
 		# id_column
