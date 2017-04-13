@@ -41,7 +41,6 @@ class AttendancesController < ApplicationController
   end
 
   def punch_out
-    binding.pry
     punch_date = current_developer.attendances.where("created_at::date=?",Date.current).first 
     total_work_min = (Time.current - punch_date.punch_in_time)/60
     hour, min = total_work_min.divmod(60)

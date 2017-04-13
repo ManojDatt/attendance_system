@@ -26,7 +26,7 @@
 						</div>
 						<!--  -->
 						<div class="col-4">
-							<%=f.text_area :task_name ,class: "form-control taskname" ,placeholder: 'Today Task', name:'todo[task_name][]', Maxlength: 100 %>
+							<%=f.text_area :task_name ,class: "form-control taskname" ,placeholder: 'Today Task', name:'todo[task_name][]', Maxlength: 100,required: true  %>
 						</div>
 					</div>
 				
@@ -39,7 +39,7 @@
 						</div>
 						<div class="form-group">
 							<div class="col-md-6">
-							<%= select_tag :hourss, options_for_select(8.times.map{|i| i}),prompt:"Select hours",class: "form-control", name:'todo[hours][]' %>
+							<%= select_tag :houres, options_for_select(8.times.map{|i| i}),prompt:"Select hours",class: "form-control", name:'todo[hours][]',required: true %>
 							</div>
 							<div class="col-md-6">
 							<%= select_tag :minutes, options_for_select( 60.times.map{|i| i if i<60}),prompt:"Select Minute", class: "form-control", name:'todo[minutes][]' %>
@@ -92,9 +92,12 @@
                 minlength: 5
             },
 
-             "todo[task_time][]": {
-                required: true,
-                minlength: 2
+             "todo[hours][]": {
+                required: true
+            },
+
+             "todo[minutes][]": {
+                required: true
             }
         },
         messages:{
@@ -107,9 +110,12 @@
                 minlength: "Please enter atleast 5 characters"
             },
 
-             "todo[task_time][]": {
-                required: "Please enter task duration",
-                minlength: "Please enter minimum 2 characters"
+             "todo[hours][]": {
+                required: "Please select hours."
+            },
+
+             "todo[minutes][]": {
+                required: "Please select minutes"
             }
         },
         submitHandler: function(form) {
