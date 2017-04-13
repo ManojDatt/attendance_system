@@ -1,6 +1,6 @@
 class DsrChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "dsr_channel"
+    stream_from "admin"
   end
 
   def unsubscribed

@@ -5,6 +5,7 @@ match "/admin/leave_applications/:id/accept" => 'admin/leave_applications#accept
 match "/admin/leave_applications/:id/reject" => 'admin/leave_applications#reject', via: :get, as: "reject"
 match "/admin/developers/:id/get_attandence" => 'admin/developers#get_attandence', via: :get, as: "get_attandence"
 match "/admin/developers/:id/download_attandence" => 'admin/developers#download_attandence', via: :get, as: "download_attandence"
+match "/admin/dsrs/:id/reply_dsr"=> "admin/dsrs#reply_dsr", via: [:get, :post], as: "admin_reply_dsr"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -13,11 +14,15 @@ match "/admin/developers/:id/download_attandence" => 'admin/developers#download_
 	resources :projects
 	resources :leaves,only:[:index]
 	resources :apply_leaves,only:[:index,:new,:create]
-	resources :todos,only:[:new,:create] do
+
+	resources :todos,only:[:index,:new,:create,:show] do
 		collection do
 			get 'today_research'
 			post 'submit_research'
 		end
+		member do
+			post "reply_dsr"
+		end	
 	end
 	resources :attendances, only:[:index]
 	devise_for :developers, skip: :registrations

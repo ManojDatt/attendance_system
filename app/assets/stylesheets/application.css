@@ -239,3 +239,6 @@ hr {margin-top: 20px !important; margin-bottom: 20px !important; }
     margin-left: 28%;
     font-size: medium;
 }
+.unpaid + label{margin-left: 115px; width: 200px;}
+.dsr_action{bottom: 36px; margin-bottom: -1px; padding: 0; }
+.badge {background-color: #4c5fae !important;}

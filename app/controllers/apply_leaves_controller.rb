@@ -35,7 +35,7 @@ class ApplyLeavesController < ApplicationController
   def validate_leave_type 
     @avail_leave = current_developer.leave.available_leave
     if params[:apply_leave][:leave_type] == "Paid" && @avail_leave < (params[:apply_leave][:end_date].to_i-params[:apply_leave][:start_date].to_i)+1
-      redirect_to leaves_path  flash[:danger]= "Sorry Try again with leave type"
+      redirect_to leaves_path  flash[:danger]= "Sorry you don't have enough leave balance, apply with unpaid leave !"
     end    
   end
 end

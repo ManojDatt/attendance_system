@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411101147) do
+ActiveRecord::Schema.define(version: 20170412124348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 20170411101147) do
     t.string   "extra_work"
     t.string   "work_hour"
     t.datetime "lat_in"
-    t.datetime "early_out"
+    t.string   "early_out"
     t.boolean  "punch_out_status", default: false
     t.boolean  "week_off",         default: false
     t.float    "punch_in_at",      default: 10.0
@@ -116,6 +116,15 @@ ActiveRecord::Schema.define(version: 20170411101147) do
     t.macaddr  "sign_in_mac"
     t.index ["email"], name: "index_developers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_developers_on_reset_password_token", unique: true, using: :btree
+  end
+
+  create_table "dsr_replies", force: :cascade do |t|
+    t.integer  "todo_id"
+    t.text     "message"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "seen",       default: false
+    t.index ["todo_id"], name: "index_dsr_replies_on_todo_id", using: :btree
   end
 
   create_table "leaves", force: :cascade do |t|
@@ -160,6 +169,7 @@ ActiveRecord::Schema.define(version: 20170411101147) do
 
   add_foreign_key "apply_leaves", "developers"
   add_foreign_key "attendances", "developers"
+  add_foreign_key "dsr_replies", "todos"
   add_foreign_key "leaves", "developers"
   add_foreign_key "notifications", "developers"
   add_foreign_key "todos", "developers"

@@ -7,18 +7,19 @@ ActiveAdmin.register Todo ,as: "DSR" do
 
 	permit_params :task_name,:task_time,:task_type,:project,:developer
 	config.batch_actions = false
-	actions :all,except:[:new]
+	actions :all,except:[:new, :destroy]
 
 	index download_links: [:csv] do
-		# id_column
+		column "DSR Number", :id
 		column "Task name" do |body|
               truncate(body.task_name, omision: "...", length: 50)
-      end
+        end
 		column "Task Duration (H:M)",:task_time
 		column :task_type
 		column :project
 		column :developer
 		column "Created Date", :created_at
+		column() {|todo| link_to "Reply (#{todo.dsr_replies.count})", admin_reply_dsr_path(todo), method: :post}
 		actions
 	end
 
@@ -48,4 +49,15 @@ ActiveAdmin.register Todo ,as: "DSR" do
 			row :updated_at
 		end
 	end 
+
+	member_action :reply_dsr do
+		@dsr = Todo.find_by(:id=>params[:id])
+		@developer = @dsr.developer
+		@replies = @dsr.dsr_replies
+		if params['commit']=="Reply"
+			flash[:warning] = "You have repleid on DSR # #{@dsr.id}."
+			@dsr.dsr_replies.create(message:params[:reply][:message])
+			redirect_to admin_dsrs_path
+		end
+	end
 end

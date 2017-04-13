@@ -2,6 +2,9 @@
 <div class="main" id="main">
     <h2>Dailly Attendances</h2>
     <hr>
+    <div class="form-control">
+        
+    </div>
     <div class="main-content">
         <div class="table-responsive">          
             <table class="table table-bordered">
@@ -46,7 +49,7 @@
                             <%= attendance.lat_in.present? ? "#{attendance.lat_in.hour} hour : #{attendance.lat_in.min} min" : ".."%>
                         </td>
                          <td>
-                            <%= attendance.early_out.present? ? today_early_out(attendance) : ".."%>
+                            <%= attendance.early_out.present? ? attendance.early_out : ".."%>
                         </td>
                         <td>
                             <%= attendance.work_hour.present? ? attendance.work_hour : ".."%>
