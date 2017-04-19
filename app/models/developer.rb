@@ -34,6 +34,8 @@ class Developer < ApplicationRecord
     email
   end 
 
+  
+
   def create_leave_record
     if Time.current.mday <=15
       self.create_leave(:total_leave=> 1,:available_leave=> 1)
@@ -91,9 +93,21 @@ class Developer < ApplicationRecord
 
   end
 
-private
+  def active_for_authentication?
+      super && (self.is_locked ? false : true) 
+  end
 
-def password_required?
-  new_record? ? super : false
-end
+  def inactive_message
+    "Sorry, your account has been locked. Please contact to admin."
+  end
+
+  private
+
+  def password_required?
+    new_record? ? super : false
+  end
+
+
+
+  
 end
