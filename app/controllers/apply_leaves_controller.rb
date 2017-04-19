@@ -17,7 +17,7 @@ class ApplyLeavesController < ApplicationController
         current_developer.leave.update(available_leave:@total_available_leave)
       end
       ActionCable.server.broadcast "admin:attendances", {message:"#{current_developer.email} apply leave", user:current_developer.name}
-  		flash[:success]="Application submited success fully..."
+  		flash[:success]="Application submited successfully..."
   		redirect_to '/'
   	else
   		flash[:danger]="We are sorry, but something went wrong..."
@@ -35,7 +35,8 @@ class ApplyLeavesController < ApplicationController
   def validate_leave_type 
     @avail_leave = current_developer.leave.available_leave
     if params[:apply_leave][:leave_type] == "Paid" && @avail_leave < (params[:apply_leave][:end_date].to_i-params[:apply_leave][:start_date].to_i)+1
-      redirect_to leaves_path  flash[:danger]= "Sorry you don't have enough leave balance, apply with unpaid leave !"
+      flash[:danger]= "Sorry you don't have enough leave balance, apply with unpaid leave !"
+      redirect_to leaves_path  
     end    
   end
 end
