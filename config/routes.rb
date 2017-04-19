@@ -10,8 +10,7 @@ match "/admin/dsrs/:id/reply_dsr"=> "admin/dsrs#reply_dsr", via: [:get, :post], 
 
 devise_for :admin_users, ActiveAdmin::Devise.config
 ActiveAdmin.routes(self)
-# devise_for :admins, skip: :registrations
-# mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
 resources :projects
 resources :leaves,only:[:index]
 resources :apply_leaves,only:[:new,:create,:index]
@@ -20,11 +19,11 @@ resources :todos,only:[:index,:new,:create,:show] do
 	collection do
 		get 'today_research'
 		post 'submit_research'
+		post 'create', as: 'dsr'
 	end
-	member do
-		post "reply_dsr"
-	end	
+	
 end
+post "todos/:id/reply_dsr"=>"todos#reply_dsr", as: "reply"
 resources :attendances, only:[:index]
 resources :notification, only:[:index]
 devise_for :developers, skip: :registrations
@@ -33,7 +32,7 @@ match '/'=> "attendances#index", via: [:get, :post]
 get "punch_out"=>"attendances#punch_out", as: :punch_out
 get 'developer-profile'=> "attendances#get_developer_profile" , as: :get_developer_profile
 
-# mount ActionCable.server => '/cable'
-# match '*path' => redirect('/'), via: [:get,:post]
+mount ActionCable.server => '/cable'
+match '*path' => redirect('/'), via: [:get,:post]
 
 end

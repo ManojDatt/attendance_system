@@ -45,7 +45,7 @@
                 <% end %>
             <% end %>
             </ul>
-            <%=form_for :reply, url:reply_dsr_todo_path(@dsr) , method:"POST" do |f|%>
+            <%=form_for :reply, url:reply_path(@dsr) , method:"POST" do |f|%>
             <div class="form-group">
             <%=f.text_area :message, class:"form-control" %>
             </div>
