@@ -14,7 +14,7 @@ ActiveAdmin.routes(self)
 # mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 resources :projects
 resources :leaves,only:[:index]
-resources :apply_leaves,only:[:new,:create]
+resources :apply_leaves,only:[:new,:create,:index]
 match '/todos'=>'todos#index', as: 'todos', via: [:get, :post]
 resources :todos,only:[:index,:new,:create,:show] do
 	collection do

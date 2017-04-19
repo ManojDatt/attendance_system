@@ -8,7 +8,7 @@ class AttendancesController < ApplicationController
      #s.ip_address
      #Mac.addr
      p Socket.gethostname
-    @notification = current_developer.notifications.where(unseen:true).count 
+    @notification = current_developer.notifications.where(unseen:true,notification_type:'dsr-reply').count 
     if current_developer.attendances.exists?
       punch_date = current_developer.attendances.where("created_at::date=?",Date.current).first 
       unless punch_date.punch_in_status
