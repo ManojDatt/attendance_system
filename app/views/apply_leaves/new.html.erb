@@ -35,13 +35,13 @@
         
              <center>
              <div class="col-md-3">
-                 <label class=" col-form-label"> Unpaid </label>
-                    <input type="radio" name= "apply_leave[leave_type]" value='Unpaid' class="unpaid">
+                 <label class=" col-form-label"> Paid </label>
+                    <input type="radio" name= "apply_leave[leave_type]" value='Paid' >
 
              </div>
              <div class="col-md-2">
-                 <label class=" col-form-label"> Paid </label>
-                    <input type="radio" name= "apply_leave[leave_type]" value='Paid'>
+                 <label class=" col-form-label"> Unpaid </label>
+                    <input type="radio" name= "apply_leave[leave_type]" value='Unpaid'>
              </div>
                  <div class="form-group">
                 <%=f.submit "Apply Leave" ,class: "btn btn-success"%>
