@@ -33,8 +33,7 @@ module AttendancesHelper
 		if (attendance.punch_in_time.present?) and (attendance.punch_in_time.hour <= 10)
 			if (Time.current >= (attendance.punch_in_time.hour + 4.hours))
 				"PR"
-			else
-				".."
+			
 			end
 		##   If User punch in after 10 AM	
 		elsif (attendance.punch_in_time.present? and attendance.punch_in_time.hour > 10)
@@ -48,11 +47,9 @@ module AttendancesHelper
 			 elsif (attendance.created_at.to_date == Date.current) and (not attendance.week_off)
 			 	if Time.current.hour > 10
 			 		"AB"
-			 	else
-			 		".."
+			 	
 			 	end
-			 else
-			 	".."
+			 
 			 end
 
 		end 	
@@ -64,16 +61,14 @@ module AttendancesHelper
 		if (attendance.punch_in_time.present?) and (attendance.punch_in_time.hour == 14)
 			if (Time.current >= (attendance.punch_in_time.hour + 5.hours))
 				"PR"
-			else
-				".."
+			
 			end
 		##   If User punch in before 2 PM then check 2nd half after 7 PM
 		elsif (attendance.punch_in_time.present?) and (attendance.punch_in_time.hour < 14)
 			if attendance.punch_out_time.present? 
 				if attendance.punch_out_time.hour > 19
 					"PR"
-				elsif 
-					".."
+				
 				end
 			end
 		##   If User punch in after 2 PM then 2nd half will be AB	
@@ -84,8 +79,7 @@ module AttendancesHelper
 			else
 				if attendance.punch_out_time.present? and attendance.punch_out_time.hour < 4 
 					"AB"
-				else
-					".."
+				
 				end
 
 			end				
@@ -99,11 +93,9 @@ module AttendancesHelper
 			 elsif (attendance.created_at.to_date == Date.current) and (not attendance.week_off)
 			 	if Time.current.hour > 10
 			 		"AB"
-			 	else
-			 		".."
+			 	
 			 	end
-			 else
-			 	".."
+			 
 			 end
 
 		end 			
