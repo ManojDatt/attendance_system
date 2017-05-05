@@ -1,3 +1,1 @@
-web: bundle exec puma -p 5000  ./config.ru  
-actioncable: bundle exec puma -p 28080  cable/config.ru  
-redis: redis-server  
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
