@@ -32,7 +32,7 @@ match '/'=> "attendances#index", via: [:get, :post]
 get "punch_out"=>"attendances#punch_out", as: :punch_out
 get 'developer-profile'=> "attendances#get_developer_profile" , as: :get_developer_profile
 
-mount ActionCable.server => '/cable'
+# mount ActionCable.server => '/cable'
 match '*path' => redirect('/'), via: [:get,:post]
 
 end
