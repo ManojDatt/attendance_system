@@ -83,6 +83,9 @@ ActiveAdmin.register Attendance do
 		      flash[:warning] = "No developer found with '#{params['EMAIL']}' email!"
 		      redirect_to admin_attendances_path
 		    end 
+		else
+			flash[:warning] = "No developer found!"
+		    redirect_to admin_attendances_path   	 
 	    end
 
 	end

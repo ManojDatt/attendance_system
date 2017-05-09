@@ -5,10 +5,10 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   host: localhost
-  username: postgres
-  password: postgres
+  username: root
+  password: abc@123
   pool: 5
   timeout: 5000
 
@@ -24,5 +24,10 @@ test:
   database: information
 
 production:
-  <<: *default
-  database: information
+  adapter: mysql
+  host: localhost
+  username: arkasoft_atd_sys
+  password: Attendance2342
+  pool: 5
+  timeout: 5000
+  database: arkasoft_attendance

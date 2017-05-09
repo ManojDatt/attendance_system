@@ -31,7 +31,7 @@ class Developer < ApplicationRecord
   end 
 
   def name
-    email
+    username
   end 
 
   
