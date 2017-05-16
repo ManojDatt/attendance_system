@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.0.1'
-gem 'mysql2'
+gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -41,6 +41,8 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'active_admin_theme'
 gem 'cancan'
 gem 'clockwork'
-gem 'macaddr'
+#gem 'mac-address'
 gem 'screencap'
 gem 'redis', '~>3.2'
+gem 'mac_address'
+

@@ -1,0 +1,811 @@
+=> Booting Puma
+=> Rails 5.0.2 application starting in development on http://localhost:3000
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.8.2 (ruby 2.4.0-p0), codename: Sassy Salamander
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://localhost:3000
+Exiting
+/home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:269:in `initialize': Cannot assign requested address - bind(2) for "::1" port 3000 (Errno::EADDRNOTAVAIL)
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:269:in `new'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:269:in `add_tcp_listener'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:263:in `block in add_tcp_listener'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:262:in `each'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:262:in `add_tcp_listener'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:105:in `block in parse'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:88:in `each'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/binder.rb:88:in `parse'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/runner.rb:144:in `load_and_bind'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/single.rb:87:in `run'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/puma/launcher.rb:172:in `run'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/puma-3.8.2/lib/rack/handler/puma.rb:64:in `run'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/rack-2.0.1/lib/rack/server.rb:296:in `start'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/commands/server.rb:79:in `start'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:90:in `block in server'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:85:in `tap'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:85:in `server'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/commands/commands_tasks.rb:49:in `run_command!'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/railties-5.0.2/lib/rails/commands.rb:18:in `<top (required)>'
+	from /home/cabox/workspace/bin/rails:9:in `require'
+	from /home/cabox/workspace/bin/rails:9:in `<top (required)>'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/spring-2.0.1/lib/spring/client/rails.rb:28:in `load'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/spring-2.0.1/lib/spring/client/rails.rb:28:in `call'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/spring-2.0.1/lib/spring/client/command.rb:7:in `call'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/spring-2.0.1/lib/spring/client.rb:30:in `run'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/spring-2.0.1/bin/spring:49:in `<top (required)>'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/spring-2.0.1/lib/spring/binstub.rb:31:in `load'
+	from /home/cabox/.rvm/gems/ruby-2.4.0/gems/spring-2.0.1/lib/spring/binstub.rb:31:in `<top (required)>'
+	from /home/cabox/workspace/bin/spring:15:in `require'
+	from /home/cabox/workspace/bin/spring:15:in `<top (required)>'
+	from bin/rails:3:in `load'
+	from bin/rails:3:in `<main>'
+=> Booting Puma
+=> Rails 5.0.2 application starting in development on http://0.0.0.0:3000
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.8.2 (ruby 2.4.0-p0), codename: Sassy Salamander
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
+Started GET "/admin/developers" for 104.131.159.76 at 2017-05-10 06:10:10 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Admin::DevelopersController#index as HTML
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:10:11 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "developers" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb (816.6ms)
+Completed 200 OK in 879ms (Views: 824.4ms | ActiveRecord: 11.6ms)
+
+
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:11 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/admin/attendances" for 104.131.159.76 at 2017-05-10 06:10:11 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AttendancesController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:12 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "attendances" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mDeveloper Load (0.6ms)[0m  [1m[34mSELECT "developers".* FROM "developers"[0m
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb (371.0ms)
+Completed 200 OK in 396ms (Views: 379.9ms | ActiveRecord: 7.3ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:10:13 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:13 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:10:13 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:13 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:10:16 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:16 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:22 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/admin/attendances" for 104.131.159.76 at 2017-05-10 06:10:23 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AttendancesController#index as HTML
+  [1m[36mAdminUser Load (0.7ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "attendances" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mDeveloper Load (0.5ms)[0m  [1m[34mSELECT "developers".* FROM "developers"[0m
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb (273.3ms)
+Completed 200 OK in 284ms (Views: 276.0ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:10:24 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:24 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:31 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/admin/dashboard" for 104.131.159.76 at 2017-05-10 06:10:31 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/page/index.html.arb
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/page/index.html.arb (226.8ms)
+Completed 200 OK in 234ms (Views: 230.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:10:32 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:32 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:39 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started GET "/admin/dashboard" for 104.131.159.76 at 2017-05-10 06:10:39 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/page/index.html.arb
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/page/index.html.arb (205.8ms)
+Completed 200 OK in 211ms (Views: 207.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:10:40 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:40 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:49 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/admin/admin_users" for 104.131.159.76 at 2017-05-10 06:10:49 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "admin_users"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mAdminUser Load (0.6ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb (254.4ms)
+Completed 200 OK in 263ms (Views: 257.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:10:50 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:10:50 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+I, [2017-05-10T06:12:04.691704 #12142]  INFO -- : Starting clock for 4 events: [ check 1st half on every 1 hour check 2nd half on every 1 hour Attendance created by start of month Add leave on every month's 1st day ]
+I, [2017-05-10T06:12:04.695376 #12142]  INFO -- : Triggering 'check 1st half on every 1 hour'
+I, [2017-05-10T06:12:04.849021 #12142]  INFO -- : Triggering 'check 2nd half on every 1 hour'
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:12:23 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/admin/admin_users" for 104.131.159.76 at 2017-05-10 06:12:23 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::AdminUsersController#index as HTML
+  [1m[36mAdminUser Load (12.0ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb
+  [1m[35m (20.2ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "admin_users"[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "admin_users" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  [1m[36mAdminUser Load (2.1ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" ORDER BY "admin_users"."id" desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb (1010.9ms)
+Completed 200 OK in 1124ms (Views: 1006.8ms | ActiveRecord: 35.3ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:12:26 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:12:26 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Started GET "/admin/developers" for 104.131.159.76 at 2017-05-10 06:13:46 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DevelopersController#index as HTML
+  [1m[36mAdminUser Load (0.8ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb
+  [1m[35m (3.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "developers" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb (241.8ms)
+Completed 200 OK in 251ms (Views: 242.8ms | ActiveRecord: 3.8ms)
+
+
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:13:47 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:13:49 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:13:49 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:20:28 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/" for 104.131.159.76 at 2017-05-10 06:20:29 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AttendancesController#index as HTML
+Completed 401 Unauthorized in 9ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-10 06:20:30 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (21.5ms)
+Completed 200 OK in 537ms (Views: 489.3ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:20:40 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:20:40 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Started GET "/admin/developers" for 104.131.159.76 at 2017-05-10 06:23:21 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DevelopersController#index as HTML
+  [1m[36mAdminUser Load (6.2ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "developers" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb (414.3ms)
+Completed 200 OK in 435ms (Views: 416.9ms | ActiveRecord: 9.9ms)
+
+
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:23:22 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:23:23 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:23:23 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:23:39 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-10 06:23:39 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 195ms (Views: 193.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:23:58 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:23:58 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Started GET "/admin/developers" for 104.131.159.76 at 2017-05-10 06:27:41 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DevelopersController#index as HTML
+  [1m[36mAdminUser Load (0.9ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "developers" LIMIT $1 OFFSET $2) subquery_for_count[0m  [["LIMIT", 30], ["OFFSET", 0]]
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/index.html.arb (249.2ms)
+Completed 200 OK in 259ms (Views: 253.4ms | ActiveRecord: 1.6ms)
+
+
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:27:42 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:27:42 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:27:42 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:33:03 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-10 06:33:08 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 190ms (Views: 188.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:33:28 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:33:28 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+D, [2017-05-10T06:34:36.116387 #12142] DEBUG -- : Got INT signal
+I, [2017-05-10T06:34:36.116929 #12142]  INFO -- : Shutting down
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:36:12 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-10 06:36:13 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 201ms (Views: 199.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 06:36:22 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 06:36:22 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+=> Booting Puma
+=> Rails 5.0.2 application starting in development on http://0.0.0.0:3000
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.8.2 (ruby 2.4.0-p0), codename: Sassy Salamander
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 09:35:34 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:35:34 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 09:35:34 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:35:34 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 09:35:38 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:35:38 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 09:35:39 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:35:39 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:36:26 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started POST "/" for 104.131.159.76 at 2017-05-10 09:36:26 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AttendancesController#index as HTML
+  Parameters: {"authenticity_token"=>"obisXdzGHNu6Om76flpkEYjM/e+8mMM+bbmcDi/W2NRERpzHj/h2dejLc6pvlCvAmWWrKXx4KBlbMNDIxdlw3g==", "date"=>"05/11/2017"}
+  [1m[36mDeveloper Load (1.0ms)[0m  [1m[34mSELECT  "developers".* FROM "developers" WHERE "developers"."id" = $1 ORDER BY "developers"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+"box-codeanywhere"
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "notifications" WHERE "notifications"."developer_id" = $1 AND "notifications"."unseen" = $2 AND "notifications"."notification_type" = $3[0m  [["developer_id", 1], ["unseen", true], ["notification_type", "dsr-reply"]]
+  [1m[36mAttendance Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."developer_id" = $1 LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+  [1m[36mAttendance Load (0.8ms)[0m  [1m[34mSELECT  "attendances".* FROM "attendances" WHERE "attendances"."developer_id" = $1 AND (created_at::date='2017-05-10') ORDER BY created_at::date LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+  Rendering attendances/index.html.erb within layouts/developer_layout
+  [1m[36mAttendance Load (4.5ms)[0m  [1m[34mSELECT  "attendances".* FROM "attendances" WHERE "attendances"."developer_id" = $1 AND (extract(month from created_at) = '05' AND extract(year from created_at) = '2017') ORDER BY created_at::date LIMIT $2 OFFSET $3[0m  [["developer_id", 1], ["LIMIT", 31], ["OFFSET", 0]]
+  Rendered attendances/_attendance.html.erb (19.3ms)
+  Rendered attendances/index.html.erb within layouts/developer_layout (22.6ms)
+  [1m[36mAttendance Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."developer_id" = $1 LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+  [1m[36mAttendance Load (0.6ms)[0m  [1m[34mSELECT  "attendances".* FROM "attendances" WHERE "attendances"."developer_id" = $1 ORDER BY created_at::date DESC LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+Completed 200 OK in 994ms (Views: 813.6ms | ActiveRecord: 21.2ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 09:36:31 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:36:31 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Started GET "/punch_out" for 104.131.159.76 at 2017-05-10 09:36:38 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AttendancesController#punch_out as HTML
+  [1m[36mDeveloper Load (2.6ms)[0m  [1m[34mSELECT  "developers".* FROM "developers" WHERE "developers"."id" = $1 ORDER BY "developers"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAttendance Load (2.4ms)[0m  [1m[34mSELECT  "attendances".* FROM "attendances" WHERE "attendances"."developer_id" = $1 AND (created_at::date='2017-05-10') ORDER BY created_at::date LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "attendances" SET "punch_out_time" = $1, "work_hour" = $2, "extra_work" = $3, "punch_out_status" = $4, "updated_at" = $5 WHERE "attendances"."id" = $6[0m  [["punch_out_time", 2017-05-10 13:36:38 UTC], ["work_hour", "00 hour: 07 min"], ["extra_work", "00 hour: 06 min"], ["punch_out_status", true], ["updated_at", 2017-05-10 13:36:38 UTC], ["id", 1]]
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://attendance-manojdatt1it844003.codeanyapp.com:3000/attendances
+Completed 302 Found in 29ms (ActiveRecord: 9.9ms)
+
+
+Started GET "/attendances" for 104.131.159.76 at 2017-05-10 09:36:38 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AttendancesController#index as HTML
+  [1m[36mDeveloper Load (1.6ms)[0m  [1m[34mSELECT  "developers".* FROM "developers" WHERE "developers"."id" = $1 ORDER BY "developers"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+"box-codeanywhere"
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "notifications" WHERE "notifications"."developer_id" = $1 AND "notifications"."unseen" = $2 AND "notifications"."notification_type" = $3[0m  [["developer_id", 1], ["unseen", true], ["notification_type", "dsr-reply"]]
+  [1m[36mAttendance Exists (2.4ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."developer_id" = $1 LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+  [1m[36mAttendance Load (0.9ms)[0m  [1m[34mSELECT  "attendances".* FROM "attendances" WHERE "attendances"."developer_id" = $1 AND (created_at::date='2017-05-10') ORDER BY created_at::date LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+  Rendering attendances/index.html.erb within layouts/developer_layout
+  [1m[36mAttendance Load (0.7ms)[0m  [1m[34mSELECT  "attendances".* FROM "attendances" WHERE "attendances"."developer_id" = $1 ORDER BY created_at::date LIMIT $2 OFFSET $3[0m  [["developer_id", 1], ["LIMIT", 31], ["OFFSET", 0]]
+  Rendered attendances/_attendance.html.erb (19.7ms)
+  Rendered attendances/index.html.erb within layouts/developer_layout (21.7ms)
+  [1m[36mAttendance Exists (14.3ms)[0m  [1m[34mSELECT  1 AS one FROM "attendances" WHERE "attendances"."developer_id" = $1 LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+  [1m[36mAttendance Load (3.0ms)[0m  [1m[34mSELECT  "attendances".* FROM "attendances" WHERE "attendances"."developer_id" = $1 ORDER BY created_at::date DESC LIMIT $2[0m  [["developer_id", 1], ["LIMIT", 1]]
+Completed 200 OK in 340ms (Views: 302.2ms | ActiveRecord: 24.0ms)
+
+
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:37:05 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started DELETE "/developers/sign_out" for 104.131.159.76 at 2017-05-10 09:37:05 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"j+odSjXHdefN0J5s7JXhZHSpab4/GJI/BBFFnmcQ9+JqFC3QZvkfSZ8hgzz9W661ZQA/eP/4eRgymAlYjR9f6A=="}
+  [1m[36mDeveloper Load (5.3ms)[0m  [1m[34mSELECT  "developers".* FROM "developers" WHERE "developers"."id" = $1 ORDER BY "developers"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://attendance-manojdatt1it844003.codeanyapp.com:3000/
+Completed 302 Found in 25ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/" for 104.131.159.76 at 2017-05-10 09:37:06 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AttendancesController#index as HTML
+Completed 401 Unauthorized in 6ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-10 09:37:06 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (27.3ms)
+Completed 200 OK in 463ms (Views: 458.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 09:37:08 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:37:08 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Started GET "/admin/developers/1" for 104.131.159.76 at 2017-05-10 09:41:44 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DevelopersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mAdminUser Load (3.2ms)[0m  [1m[34mSELECT  "admin_users".* FROM "admin_users" WHERE "admin_users"."id" = $1 ORDER BY "admin_users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDeveloper Load (0.5ms)[0m  [1m[34mSELECT  "developers".* FROM "developers" WHERE "developers"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/show.html.arb
+  Rendered /home/cabox/.rvm/gems/ruby-2.4.0/gems/activeadmin-1.0.0.pre5/app/views/active_admin/resource/show.html.arb (599.5ms)
+Completed 200 OK in 713ms (Views: 608.0ms | ActiveRecord: 27.8ms)
+
+
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 09:41:45 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 10:12:05 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 10:12:43 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-10 10:12:43 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 242ms (Views: 239.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 10:13:08 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 10:13:08 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 10:14:03 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-10 10:14:05 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 206ms (Views: 204.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 10:14:36 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 10:14:36 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 10:16:14 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started GET "/admin" for 104.131.159.76 at 2017-05-10 10:16:14 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 104.131.159.76 at 2017-05-10 10:16:15 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering admin_users/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered admin_users/sessions/new.html.erb within layouts/active_admin_logged_out (59.7ms)
+Completed 200 OK in 295ms (Views: 292.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-10 10:16:16 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 10:16:16 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-10 10:16:37 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+- Gracefully stopping, waiting for requests to finish
+=== puma shutdown: 2017-05-10 10:42:27 -0400 ===
+- Goodbye!
+Exiting
+=> Booting Puma
+=> Rails 5.0.2 application starting in development on http://0.0.0.0:3000
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.8.2 (ruby 2.4.0-p0), codename: Sassy Salamander
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:41:54 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:41:54 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:41:55 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:41:55 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Started GET "/admin/login" for 104.131.159.76 at 2017-05-15 08:42:31 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering admin_users/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered admin_users/sessions/_style.html.erb (0.6ms)
+  Rendered admin_users/sessions/new.html.erb within layouts/active_admin_logged_out (98.4ms)
+Completed 200 OK in 1580ms (Views: 1527.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:42:38 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:42:38 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:42:48 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/admin/login" for 104.131.159.76 at 2017-05-15 08:42:48 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering admin_users/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered admin_users/sessions/_style.html.erb (0.5ms)
+  Rendered admin_users/sessions/new.html.erb within layouts/active_admin_logged_out (27.0ms)
+Completed 200 OK in 221ms (Views: 219.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:42:52 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:42:52 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:42:54 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/admin/login" for 104.131.159.76 at 2017-05-15 08:42:54 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendering admin_users/sessions/new.html.erb within layouts/active_admin_logged_out
+  Rendered admin_users/sessions/_style.html.erb (2.1ms)
+  Rendered admin_users/sessions/new.html.erb within layouts/active_admin_logged_out (44.5ms)
+Completed 200 OK in 308ms (Views: 306.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:42:58 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:42:58 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:43:03 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/" for 104.131.159.76 at 2017-05-15 08:43:04 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by AttendancesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-15 08:43:04 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (18.1ms)
+Completed 200 OK in 357ms (Views: 317.2ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:43:06 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:43:06 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:43:07 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-15 08:43:07 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 193ms (Views: 191.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/developers/sign_in" for 104.131.159.76 at 2017-05-15 08:43:07 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 185ms (Views: 183.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:43:18 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:43:18 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:47:09 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:47:11 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:47:11 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:47:48 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:47:50 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:47:50 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:48:07 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:48:08 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:48:08 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:50:55 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:50:57 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:50:57 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:50:59 -0400
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:51:00 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:51:00 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:51:25 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 08:51:27 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:51:27 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 08:56:38 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 09:10:16 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 09:10:18 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 09:10:18 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 09:10:20 -0400
+Started GET "/cable" for 104.131.159.76 at 2017-05-15 09:10:22 -0400
+Cannot render console from 104.131.159.76! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Started GET "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 09:10:22 -0400
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+LeaveChannel is transmitting the subscription confirmation
+LeaveChannel is streaming from admin:attendances
+DsrChannel is transmitting the subscription confirmation
+DsrChannel is streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 09:19:06 -0400
+LeaveChannel stopped streaming from admin:attendances
+DsrChannel stopped streaming from admin
+Finished "/cable/" [WebSocket] for 104.131.159.76 at 2017-05-15 09:19:10 -0400
+DsrChannel stopped streaming from admin
+LeaveChannel stopped streaming from admin:attendances
+- Gracefully stopping, waiting for requests to finish
+=== puma shutdown: 2017-05-15 09:41:35 -0400 ===
+- Goodbye!
+Exiting

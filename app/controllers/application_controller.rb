@@ -27,7 +27,8 @@ class ApplicationController < ActionController::Base
   end
   
   def verify_mac_address
-        if current_developer.present? and (current_developer.sign_in_mac != Mac.addr)
+    require 'mac_address'
+        if current_developer.present? and ! current_developer.sign_in_mac.valid_mac?
           scope = Devise::Mapping.find_scope!(current_developer)
           redirect_path = after_sign_out_path_for(scope)
           Devise.sign_out_all_scopes ? sign_out : sign_out(scope)

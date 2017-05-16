@@ -1,42 +1,198 @@
-<div class="row">
-<div class="col-md-4 col-xs-push-4 login_panel" >
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="card card-container">
+  <img id="profile-img" class="profile-img-card" src="/assets/logo.png" />
+  <p id="profile-name" class="profile-name-card"></p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="form-group">
-  <%= f.label 'Email or Username' %><br />
-    
-    <%= f.text_field :login, autofocus: true, class:"form-control" %>
-  </div>
-  <div class="form-group">
-  <%= f.label :password %><br />
-    
-    <%= f.password_field :password, autocomplete: "off" ,class:"form-control"%>
-  </div>
-  <% if devise_mapping.rememberable? -%>
     <div class="form-group">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+      <%= f.label 'Email or Username' %><br />
 
-  <div class="actions text-center">
-    <%= f.submit "Log in", class:'btn btn-primary text-center' %>
-  </div>
-  <% if flash.present? %>
-  <br>
-    <div class="alert alert-danger fade in" id="flash_error">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <%=flash.first[1]%>
+        <%= f.text_field :login, autofocus: true, class:"form-control" %>
     </div>
-    <% end %>
-<% end %>
+    <div class="form-group">
+      <%= f.label :password %><br />
+
+        <%= f.password_field :password, autocomplete: "off" ,class:"form-control"%>
+    </div>
+    <% if devise_mapping.rememberable? -%>
+
+      <div id="remember" class="checkbox">
+        <label>
+          <%= f.check_box :remember_me %> Remember me
+          </label>
+      </div>
+
+      <% end -%>
+
+        <div class="actions text-center">
+          <%= f.submit "Log in", class:'btn btn-lg btn-primary btn-block btn-signin' %>
+        </div>
+        <% if flash.present? %>
+          <br>
+          <div class="alert alert-danger fade in" id="flash_error">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <%=flash.first[1]%>
+          </div>
+          <% end %>
+            <% end %>
+
+</div>
+
+
+
+
 <script>
+  $(document).ready(function() {
+    $(".alert").delay(2000).slideUp(200, function() {
+    });
+ 
+  
+  $("#new_developer").validate({
+            rules: {            
+                "developer[login]": {
+                    required: true
+                },
 
-$(document).ready(function(){
-  $(".alert").delay(2000).slideUp(200, function() {
-      $(this).alert('close');
-  });
-});
+                "developer[password]": {
+                    required: true
+                },
+
+            },
+            messages:{
+
+                "developer[login]": {
+                    required: "Please enter email or username."
+                },
+
+                "developer[password]": {
+                    required: "Please enter password."
+                },
+
+            },
+            submitHandler: function(form) {
+                form.submit();
+            }
+
+        });
+     });
 </script>
+<style>
+  img { background-image: linear-gradient(#0c9fd9, #7a75e3); border-radius: 10px; padding: 1em 4.8em; vertical-align: middle; } 
+  body,
+  html {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#0c9fd9, #7a75e3);
+    height: 100%;
+  }
+  label{color: rgba(17, 18, 51, 0.47);}
+  .card-container.card {
+    max-width: 450px;
+    padding: 40px 40px;
+  }
+  
+  .btn {
+    font-weight: 700;
+    height: 36px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+  }
+  
+  .card {
+/*     background-color: #F7F7F7; */
+    padding: 20px 25px 30px;
+    margin: 0 auto 25px;
+    margin-top: 50px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .profile-name-card {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0 0;
+    min-height: 1em;
+  }
+  
+  .reauth-email {
+    display: block;
+    color: #404040;
+    line-height: 2;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .form-signin #inputEmail,
+  .form-signin #inputPassword {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+  }
+  
+  .form-signin input[type=email],
+  .form-signin input[type=password],
+  .form-signin input[type=text],
+  .form-signin button {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    z-index: 1;
+    position: relative;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  
+  .form-signin .form-control:focus {
+    border-color: rgb(104, 145, 162);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
+  }
+  
+  .btn.btn-signin {
+    background-color: rgb(104, 124, 162);
+    padding: 0px;
+    font-weight: 700;
+    font-size: 14px;
+    height: 36px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    border: none;
+    -o-transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -webkit-transition: all 0.218s;
+    transition: all 0.218s;
+  }
+  
+  .btn.btn-signin:hover,
+  .btn.btn-signin:active,
+  .btn.btn-signin:focus {
+    background-color: rgba(104, 124, 162, 0.84);
+  }
+  
+  .forgot-password {
+    color: rgb(104, 145, 162);
+  }
+  
+  .forgot-password:hover,
+  .forgot-password:active,
+  .forgot-password:focus {
+    color: rgb(12, 97, 33);
+  }
+</style>
 </div>
 </div>
